@@ -1,5 +1,7 @@
 const noiseList = [{src: "../images/sampleNoise.png", title: "Sample Noise", href: "../html/sampleNoise.html"},
-                   {src: "../images/cloudNoise.png", title: "Cloud Noise", href: "../html/cloudNoise.html"}
+                   {src: "../images/cloudNoise.png", title: "Cloud Noise", href: "../html/cloudNoise.html"},
+                   {src: "../images/sampleNoise_A.png", title: "sampleNoise_A", href: "../html/sampleNoise_A.html"},
+                   {src: "../images/sampleNoise_B.png", title: "sampleNoise_B", href: "../html/sampleNoise_B.html"}
                 ]
 
 // 根据noiseList创建列表对象

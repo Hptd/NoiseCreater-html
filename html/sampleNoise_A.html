@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Noise Creater - cloud noise</title>
+    <title>Noise Creater - sample noise - A</title>
     <link rel="stylesheet" href="../css/sampleNoise.css">
     <link rel="stylesheet" href="../css/cloudNoise.css">
 </head>
@@ -24,7 +24,7 @@
             <span>噪波尺寸</span>
             <div class="right">
                 <span>==></span>
-                <input id="scale" type="text" placeholder="默认：500" value="500">
+                <input id="scale" type="text" placeholder="默认值：2" value="2">
                 <span> <== </span>
                 <button id="btnReScale">重置</button>
             </div>
@@ -81,6 +81,22 @@
         </div>
         <hr>
 
+        <div class="inValue">
+            <span>分化类型</span>
+            <div class="right">
+                <span>==></span>
+                <input type="radio" class="noise-choose" id="noise-choose-perlin" name="contact" value="1" checked />
+                <label for="noise-choose-perlin">Perlin</label>
+
+                <input type="radio" class="noise-choose" id="noise-choose-value" name="contact" value="2" />
+                <label for="noise-choose-value">Value</label>
+
+                <input type="radio" class="noise-choose" id="noise-choose-sample" name="contact" value="3" />
+                <label for="noise-choose-sample">Sample</label>
+            </div>
+        </div>
+        <hr> 
+        
         <div class="sponsor">
             <div class="sponsor-text">
                 <span>图片保存直接鼠标右键即可
@@ -92,8 +108,6 @@
         </div>
     </div>
 
-    
-
     <script type="importmap">
         {
         "imports": {
@@ -102,6 +116,6 @@
     }
     </script>
 
-    <script type="module" src="../js/cloudNioseThreeJS.js"></script>
+    <script type="module" src="../js/samplerNiose_A_ThreeJS.js"></script>
 </body>
 </html>
