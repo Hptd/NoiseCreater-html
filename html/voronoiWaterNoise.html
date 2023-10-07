@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Noise Creater - sample noise - B</title>
+    <title>Noise Creater - voronoi water noise</title>
     <link rel="stylesheet" href="../css/sampleNoise.css">
     <link rel="stylesheet" href="../css/cloudNoise.css">
 </head>
@@ -24,7 +24,7 @@
             <span>噪波尺寸</span>
             <div class="right">
                 <span>==></span>
-                <input id="scale" type="text" placeholder="默认值：1" value="1">
+                <input id="scale" type="text" placeholder="默认：1" value="1">
                 <span> <== </span>
                 <button id="btnReScale">重置</button>
             </div>
@@ -80,23 +80,66 @@
             </div>
         </div>
         <hr>
-
         <div class="inValue">
-            <span>分化类型</span>
+            <span>亮度</span>
             <div class="right">
                 <span>==></span>
-                <input type="radio" class="noise-choose" id="noise-choose-perlin" name="contact" value="1" checked />
-                <label for="noise-choose-perlin">Perlin</label>
-
-                <input type="radio" class="noise-choose" id="noise-choose-value" name="contact" value="2" />
-                <label for="noise-choose-value">Value</label>
-
-                <input type="radio" class="noise-choose" id="noise-choose-sample" name="contact" value="3" />
-                <label for="noise-choose-sample">Sample</label>
+                <input class="slider" id="onlyBrightness" type="range" min="0" max="1" value="0" step="0.01" placeholder="默认值：0">
+                <span> <== </span>
+                <button id="btnReOnlyBrightness">重置</button>
             </div>
         </div>
-        <hr> 
-        
+        <hr>
+        <div class="inValue">
+            <span>对比度</span>
+            <div class="right">
+                <span>==></span>
+                <input class="slider" id="contrast" type="range" min="0" max="1" value="0.4" step="0.01" placeholder="默认值：0.4">
+                <span> <== </span>
+                <button id="btnReContrast">重置</button>
+            </div>
+        </div>
+        <hr>
+        <div class="inValue">
+            <span>噪波细分程度</span>
+            <div class="right">
+                <span>==></span>
+                <input id="subdivide" type="text" placeholder="默认值：3(整数)" value="3">
+                <span> <== </span>
+                <button id="btnReSubdivide">重置</button>
+            </div>
+        </div>
+        <hr>
+        <div class="inValue">
+            <span>单细胞密集度</span>
+            <div class="right">
+                <span>==></span>
+                <input class="slider" id="cellScale" type="range" min="0" max="4" value="2" step="0.01" placeholder="默认值：2">
+                <span> <== </span>
+                <button id="btnReCellScale">重置</button>
+            </div>
+        </div>
+        <hr>
+        <div class="inValue">
+            <span>纯白侵略度</span>
+            <div class="right">
+                <span>==></span>
+                <input class="slider" id="whiteScale" type="range" min="0" max="8" value="0.5" step="0.01" placeholder="默认值：0.5">
+                <span> <== </span>
+                <button id="btnReWhiteScale">重置</button>
+            </div>
+        </div>
+        <hr>
+        <div class="inValue">
+            <span>开始 | 暂停</span>
+            <div class="right">
+                <span>==></span>
+                <input id="voronoi-noise-check" type="checkbox" checked="checked" style="width: 25px; height: 25px;">
+                <span> <== </span>
+            </div>
+        </div>
+        <hr>
+
         <div class="sponsor">
             <div class="sponsor-text">
                 <span>图片保存直接鼠标右键即可
@@ -116,6 +159,6 @@
     }
     </script>
 
-    <script type="module" src="../js/samplerNiose_B_ThreeJS.js"></script>
+    <script type="module" src="../js/voronoiWaterNioseThreeJS.js"></script>
 </body>
 </html>
