@@ -1,0 +1,59 @@
+/* -- 全局设置 -- 开始 -- */
+body{
+    background-color: rgb(52, 49, 43);
+}
+.page{
+    width: 1226px;
+    margin: 30px auto;
+    background-color: rgba(45, 42, 42, 0.4);
+}
+/* -- 全局设置 -- 结束 -- */
+
+/* -- noise list 设置 -- 开始 -- */
+.page .noise-list{
+    width: 1100px;
+    height: auto;
+    /* background-color: cyan; */
+    margin: 0 auto;
+}
+.page .noise-list ul{
+    /* width: 1100px; */
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+.page .noise-list ul li{
+    width: 200px;
+    height: 210px;
+    background-color: rgba(135, 135, 135, 0.2);
+    text-align: center;
+    margin: 10px;
+}
+.page .noise-list ul li:hover{
+    cursor: pointer;
+}
+.page .noise-list ul li img{
+    width: 160px;
+    height: 160px;
+    margin: 10px auto;
+}
+.page .noise-list ul li img:hover{
+    cursor: pointer;
+}
+.page .noise-list ul li a{
+    display: block;
+    color: rgb(222, 220, 220);
+}
+/* -- noise list 设置 -- 结束 -- */
+
+/* -- footer 设置 -- 开始 -- */
+/* .page .footer{
+    width: 1226px;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+    margin: 0 auto;
+    background-color: rgb(236, 183, 83);
+} */
+/* -- footer 设置 -- 结束 -- */

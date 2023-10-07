@@ -1,0 +1,67 @@
+body{
+    background-color: rgb(85, 85, 85);
+    /* display: flex; */
+    position: relative;
+    justify-content: center;
+}
+.params{
+    width: 512px;
+    height: auto;
+    background-color: rgba(49, 49, 49, 0.4);
+    margin: 30px;
+    padding-top: 5px;
+    position: absolute;
+}
+.params .right{
+    position: absolute;
+    display: inline;
+    right: 30px;
+}
+.params .inValue{
+    width: 482px;
+    height: 30px;
+    /* background-color: pink; */
+    padding-left: 30px;
+    line-height: 30px;
+}
+.params input{
+    height: 18px;
+    padding: 0 5px;
+    background-color: rgb(232, 232, 232);
+}
+.params input::placeholder{
+    opacity: 0.3;
+}
+.params span{
+    color: rgb(225, 225, 225);
+}
+.params .scale button{
+    border: 1px solid red;
+    border-radius: 10%;
+}
+.params button:hover{
+    cursor: pointer;
+}
+hr{
+    border: 3px solid rgba(131, 227, 131, 0.2);
+}
+canvas{
+    position: absolute;
+    left: 580px;
+    top: 30px;
+}
+.params .tips>span{
+    color: rgb(153, 225, 153);
+    margin-left: 30px;
+}
+.params .sponsor .sponsor-text{
+    white-space: pre-line;
+    margin-left: 30px;
+}
+.params .sponsor .sponsor-text span{
+    color: rgba(187, 187, 187, 0.6);
+}
+.params .sponsor img{
+    margin-left: 384px;
+    margin-top: -90px;
+}
