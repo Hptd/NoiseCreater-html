@@ -1,6 +1,6 @@
 import * as THREE from "three" 
 import VertShader from "./glsl/noiseVertex.js"
-import FragShader from "./glsl/voronoiWaterNoiseFragment.js"
+import FragShader from "./glsl/gridNoiseFragment.js"
 
 const downloadSize = document.querySelector("#downloadSize")
 const btnReSize = document.querySelector("#btnReSize")
@@ -37,16 +37,15 @@ const inputMoveY = document.querySelector('#moveY')
 const inputScaleX = document.querySelector("#scaleX")
 const inputScaleY = document.querySelector("#scaleY")
 const inputBrightness = document.querySelector("#brightness")
-const inputOnlyBri = document.querySelector("#onlyBrightness")
-const inputContrast = document.querySelector("#contrast")
-const inputSubdivide = document.querySelector("#subdivide")
-const inputCellScale = document.querySelector("#cellScale")
-const inputWhiteScale = document.querySelector("#whiteScale")
+const inputDelicate = document.querySelector("#delicate")
+const inputWarp = document.querySelector("#warp")
 
 const inputCheckBox = document.querySelector("#voronoi-noise-check")
 const inputColorReserve = document.querySelector("#color-reverse")
+const inputRotateAni = document.querySelector("#rotate")
 let iTime = 0;
 let colorRev = 0;
+let rotate = 0;
 
 const params = document.querySelector(".params")
 const btnReScale = document.querySelector("#btnReScale")
@@ -55,11 +54,8 @@ const btnReMoveY = document.querySelector("#btnReMoveY")
 const btnReScaleX = document.querySelector("#btnReScaleX")
 const btnReScaleY = document.querySelector("#btnReScaleY")
 const btnReBrightness = document.querySelector("#btnReBrightness")
-const btnReOnlyBri = document.querySelector("#btnReOnlyBrightness")
-const btnReContrast = document.querySelector("#btnReContrast")
-const btnReSubdivide = document.querySelector("#btnReSubdivide")
-const btnReCellScale = document.querySelector("#btnReCellScale")
-const btnReWhiteScale = document.querySelector("#btnReWhiteScale")
+const btnReDelicate = document.querySelector("#btnReDelicate")
+const btnReWarp = document.querySelector("#btnReWarp")
 
 // 传参列表
 const materialPlane = new THREE.ShaderMaterial({
@@ -73,12 +69,10 @@ const materialPlane = new THREE.ShaderMaterial({
         uvScaleY:  {value:   +inputScaleY.value    },
         brightness:{value:   +inputBrightness.value},
         iTime:     {value:   +iTime},
-        onlyBri:   {value:   +inputOnlyBri.value},
-        contrast:  {value:   +inputContrast.value},
-        subdivide: {value:   +inputSubdivide.value},
-        cellScale: {value:   +inputCellScale.value},
-        whiteScale:{value:   +inputWhiteScale.value},
-        colorRev:  {value:   colorRev}
+        delicate:  {value:   +inputDelicate.value},
+        warp:      {value:   +inputWarp.value},
+        colorRev:  {value:   colorRev},
+        rotate:    {value:   rotate}
     }
 })
 // 监听传参数
@@ -91,11 +85,8 @@ params.addEventListener('input', (e) => {
         materialPlane.uniforms.uvScaleX.value   = +inputScaleX.value,
         materialPlane.uniforms.uvScaleY.value   = +inputScaleY.value,
         materialPlane.uniforms.brightness.value = +inputBrightness.value,
-        materialPlane.uniforms.onlyBri.value    = +inputOnlyBri.value,
-        materialPlane.uniforms.contrast.value   = +inputContrast.value,
-        materialPlane.uniforms.subdivide.value  = +inputSubdivide.value,
-        materialPlane.uniforms.cellScale.value  = +inputCellScale.value,
-        materialPlane.uniforms.whiteScale.value = +inputWhiteScale.value
+        materialPlane.uniforms.delicate.value   = +inputDelicate.value,
+        materialPlane.uniforms.warp.value       = +inputWarp.value
     }
 })
 // 开关Noise动画模式
@@ -125,6 +116,14 @@ inputColorReserve.addEventListener('change', () => {
         materialPlane.uniforms.colorRev.value = 0
     }
 })
+// 开启旋转
+inputRotateAni.addEventListener('change', () => {
+    if(inputRotateAni.checked){
+        materialPlane.uniforms.rotate.value = 1
+    }else{
+        materialPlane.uniforms.rotate.value = 0
+    }
+})
 
 // 按钮重置参数
 btnReScale.addEventListener('click', () =>{
@@ -151,25 +150,13 @@ btnReBrightness.addEventListener('click', () => {
     materialPlane.uniforms.brightness.value = 0
     inputBrightness.value = 0
 })
-btnReOnlyBri.addEventListener('click', () => {
-    materialPlane.uniforms.onlyBri.value = 0
-    inputOnlyBri.value = 0
+btnReDelicate.addEventListener('click', () => {
+    materialPlane.uniforms.delicate.value = 0.04
+    inputDelicate.value = 0.04
 })
-btnReContrast.addEventListener('click', () => {
-    materialPlane.uniforms.contrast.value = 0.4
-    inputContrast.value = 0.4
-})
-btnReSubdivide.addEventListener('click', () => {
-    materialPlane.uniforms.subdivide.value = 3
-    inputSubdivide.value = 3
-})
-btnReCellScale.addEventListener('click', () => {
-    materialPlane.uniforms.cellScale.value = 2
-    inputCellScale.value = 2
-})
-btnReWhiteScale.addEventListener('click', () => {
-    materialPlane.uniforms.whiteScale.value = 0.5
-    inputWhiteScale.value = 0.5
+btnReWarp.addEventListener('click', () => {
+    materialPlane.uniforms.warp.value = 0
+    inputWarp.value = 0
 })
 
 const plane = new THREE.Mesh(planeGeo, materialPlane)

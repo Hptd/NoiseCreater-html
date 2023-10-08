@@ -12,6 +12,7 @@ uniform float contrast;
 uniform int subdivide;
 uniform float cellScale;
 uniform float whiteScale;
+uniform int colorRev;
 
 vec2 hash2(vec2 p ) {
 	return fract(sin(vec2(dot(p, vec2(123.4, 748.6)), dot(p, vec2(547.3, 659.3))))*5232.85324);   
@@ -60,6 +61,9 @@ void main(){
 	voronoiNoise.x = max(0., min(1., voronoiNoise.x + brightness));
 	voronoiNoise.y = max(0., min(1., voronoiNoise.y + brightness));
 	voronoiNoise.z = max(0., min(1., voronoiNoise.z + brightness));
+	if(colorRev == 1){
+		voronoiNoise = 1.0 - voronoiNoise;
+	}
     gl_FragColor = vec4(voronoiNoise.xyz, 1.);
 }`
 

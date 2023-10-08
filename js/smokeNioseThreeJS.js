@@ -49,7 +49,9 @@ const inputColorGray3 = document.querySelector("#color-gray-3")
 const inputColorGray4 = document.querySelector("#color-gray-4")
 
 const inputCheckBox = document.querySelector("#voronoi-noise-check")
+const inputColorReserve = document.querySelector("#color-reverse")
 let iTime = 0;
+let colorRev = 0;
 
 const params = document.querySelector(".params")
 const btnReScale = document.querySelector("#btnReScale")
@@ -90,7 +92,8 @@ const materialPlane = new THREE.ShaderMaterial({
         warp:      {value:   +inputWarp.value},
         colorGray2:{value:   +inputColorGray2.value},
         colorGray3:{value:   +inputColorGray3.value},
-        colorGray4:{value:   +inputColorGray4.value}
+        colorGray4:{value:   +inputColorGray4.value},
+        colorRev:  {value:   colorRev}
     }
 })
 // 监听传参数
@@ -130,6 +133,16 @@ inputCheckBox.addEventListener('change', (e) =>{
             iTime += 0.01
             materialPlane.uniforms.iTime.value = iTime
         }, 10);
+    }
+})
+
+// 颜色取反按钮
+inputColorReserve.addEventListener('change', () => {
+    if(inputColorReserve.checked){
+        materialPlane.uniforms.colorRev.value = 1
+    }
+    else{
+        materialPlane.uniforms.colorRev.value = 0
     }
 })
 

@@ -1,6 +1,6 @@
 import * as THREE from "three" 
 import VertShader from "./glsl/noiseVertex.js"
-import FragShader from "./glsl/voronoiWaterNoiseFragment.js"
+import FragShader from "./glsl/honeycompNoise_B_Fragment.js"
 
 const downloadSize = document.querySelector("#downloadSize")
 const btnReSize = document.querySelector("#btnReSize")
@@ -37,11 +37,8 @@ const inputMoveY = document.querySelector('#moveY')
 const inputScaleX = document.querySelector("#scaleX")
 const inputScaleY = document.querySelector("#scaleY")
 const inputBrightness = document.querySelector("#brightness")
-const inputOnlyBri = document.querySelector("#onlyBrightness")
-const inputContrast = document.querySelector("#contrast")
-const inputSubdivide = document.querySelector("#subdivide")
-const inputCellScale = document.querySelector("#cellScale")
-const inputWhiteScale = document.querySelector("#whiteScale")
+const inputDelicate = document.querySelector("#delicate")
+const inputBroken = document.querySelector("#broken")
 
 const inputCheckBox = document.querySelector("#voronoi-noise-check")
 const inputColorReserve = document.querySelector("#color-reverse")
@@ -55,11 +52,8 @@ const btnReMoveY = document.querySelector("#btnReMoveY")
 const btnReScaleX = document.querySelector("#btnReScaleX")
 const btnReScaleY = document.querySelector("#btnReScaleY")
 const btnReBrightness = document.querySelector("#btnReBrightness")
-const btnReOnlyBri = document.querySelector("#btnReOnlyBrightness")
-const btnReContrast = document.querySelector("#btnReContrast")
-const btnReSubdivide = document.querySelector("#btnReSubdivide")
-const btnReCellScale = document.querySelector("#btnReCellScale")
-const btnReWhiteScale = document.querySelector("#btnReWhiteScale")
+const btnReDelicate = document.querySelector("#btnReDelicate")
+const btnReBroken = document.querySelector("#btnReBroken")
 
 // 传参列表
 const materialPlane = new THREE.ShaderMaterial({
@@ -73,11 +67,8 @@ const materialPlane = new THREE.ShaderMaterial({
         uvScaleY:  {value:   +inputScaleY.value    },
         brightness:{value:   +inputBrightness.value},
         iTime:     {value:   +iTime},
-        onlyBri:   {value:   +inputOnlyBri.value},
-        contrast:  {value:   +inputContrast.value},
-        subdivide: {value:   +inputSubdivide.value},
-        cellScale: {value:   +inputCellScale.value},
-        whiteScale:{value:   +inputWhiteScale.value},
+        delicate:  {value:   +inputDelicate.value},
+        broken:    {value:   +inputBroken.value},
         colorRev:  {value:   colorRev}
     }
 })
@@ -91,11 +82,8 @@ params.addEventListener('input', (e) => {
         materialPlane.uniforms.uvScaleX.value   = +inputScaleX.value,
         materialPlane.uniforms.uvScaleY.value   = +inputScaleY.value,
         materialPlane.uniforms.brightness.value = +inputBrightness.value,
-        materialPlane.uniforms.onlyBri.value    = +inputOnlyBri.value,
-        materialPlane.uniforms.contrast.value   = +inputContrast.value,
-        materialPlane.uniforms.subdivide.value  = +inputSubdivide.value,
-        materialPlane.uniforms.cellScale.value  = +inputCellScale.value,
-        materialPlane.uniforms.whiteScale.value = +inputWhiteScale.value
+        materialPlane.uniforms.delicate.value   = +inputDelicate.value,
+        materialPlane.uniforms.broken.value     = +inputBroken.value
     }
 })
 // 开关Noise动画模式
@@ -128,8 +116,8 @@ inputColorReserve.addEventListener('change', () => {
 
 // 按钮重置参数
 btnReScale.addEventListener('click', () =>{
-    materialPlane.uniforms.uvScale.value = 1
-    inputScele.value = 1
+    materialPlane.uniforms.uvScale.value = 30
+    inputScele.value = 30
 })
 btnReMoveX.addEventListener('click', () => {
     materialPlane.uniforms.uvMoveX.value = 0
@@ -151,25 +139,13 @@ btnReBrightness.addEventListener('click', () => {
     materialPlane.uniforms.brightness.value = 0
     inputBrightness.value = 0
 })
-btnReOnlyBri.addEventListener('click', () => {
-    materialPlane.uniforms.onlyBri.value = 0
-    inputOnlyBri.value = 0
+btnReDelicate.addEventListener('click', () => {
+    materialPlane.uniforms.delicate.value = 3
+    inputDelicate.value = 3
 })
-btnReContrast.addEventListener('click', () => {
-    materialPlane.uniforms.contrast.value = 0.4
-    inputContrast.value = 0.4
-})
-btnReSubdivide.addEventListener('click', () => {
-    materialPlane.uniforms.subdivide.value = 3
-    inputSubdivide.value = 3
-})
-btnReCellScale.addEventListener('click', () => {
-    materialPlane.uniforms.cellScale.value = 2
-    inputCellScale.value = 2
-})
-btnReWhiteScale.addEventListener('click', () => {
-    materialPlane.uniforms.whiteScale.value = 0.5
-    inputWhiteScale.value = 0.5
+btnReBroken.addEventListener('click', () => {
+    materialPlane.uniforms.broken.value = 2
+    inputBroken.value = 2
 })
 
 const plane = new THREE.Mesh(planeGeo, materialPlane)

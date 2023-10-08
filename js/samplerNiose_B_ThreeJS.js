@@ -40,6 +40,11 @@ const inputBrightness = document.querySelector("#brightness")
 const inputNoiseChooses = document.querySelectorAll(".noise-choose")
 let noiseChooseValue = 1
 
+const inputCheckBox = document.querySelector("#voronoi-noise-check")
+const inputColorReserve = document.querySelector("#color-reverse")
+let iTime = 0;
+let colorRev = 0;
+
 const params = document.querySelector(".params")
 const btnReScale = document.querySelector("#btnReScale")
 const btnReMoveX = document.querySelector("#btnReMoveX")
@@ -58,7 +63,9 @@ const materialPlane = new THREE.ShaderMaterial({
         uvScaleX:  {value:   +inputScaleX.value   },
         uvScaleY:  {value:   +inputScaleY.value   },
         brightness:{value:   +inputBrightness.value},
-        noiseChooseValue:{value: noiseChooseValue}
+        noiseChooseValue:{value: noiseChooseValue},
+        iTime:     {value:   +iTime},
+        colorRev:  {value:   colorRev}
     }
 })
 // 监听传参数
@@ -82,6 +89,35 @@ for(let i=0; i<inputNoiseChooses.length; i++){
         }
     })
 }
+
+// 开关Noise动画模式
+let timeClockId = setInterval(() => {
+    iTime += 0.01
+    materialPlane.uniforms.iTime.value = iTime
+}, 30);
+inputCheckBox.addEventListener('change', (e) =>{
+    if(inputCheckBox.checked === false){
+        clearInterval(timeClockId)
+    }
+    else{
+        clearInterval(timeClockId)
+        timeClockId = setInterval(() => {
+            iTime += 0.01
+            materialPlane.uniforms.iTime.value = iTime
+        }, 30);
+    }
+})
+
+// 颜色取反按钮
+inputColorReserve.addEventListener('change', () => {
+    if(inputColorReserve.checked){
+        materialPlane.uniforms.colorRev.value = 1
+    }
+    else{
+        materialPlane.uniforms.colorRev.value = 0
+    }
+})
+
 
 // 按钮重置参数
 btnReScale.addEventListener('click', () =>{

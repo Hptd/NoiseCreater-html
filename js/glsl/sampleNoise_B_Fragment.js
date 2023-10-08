@@ -7,12 +7,14 @@ uniform float uvScaleX;
 uniform float uvScaleY;
 uniform float brightness;
 uniform float noiseChooseValue;
+uniform float iTime;
+uniform int colorRev;
 
 float hash21(vec2 p)
 {
 	float h = dot(p,vec2(127.1,311.7));
 	
-    return -1.0 + 2.0 * fract(sin(h)*43758.5453123);
+    return -1.0 + 2.0 * fract(sin(h)*(43758.5453123 + iTime));
 }
 vec2 hash22(vec2 p)
 {
@@ -20,7 +22,7 @@ vec2 hash22(vec2 p)
 			  dot(p,vec2(269.5,183.3)));
     
     //return normalize(-1.0 + 2.0 * fract(sin(p)*43758.5453123));
-    return -1.0 + 2.0 * fract(sin(p)*43758.5453123);
+    return -1.0 + 2.0 * fract(sin(p)*(43758.5453123 + iTime));
 }
 float perlin_noise(vec2 p)
 {
@@ -85,6 +87,9 @@ void main(){
 	vec2 mainUv = vec2((vUv.x+uvMoveX)*uvScaleX, (vUv.y+uvMoveY)*uvScaleY) * (uvScale+0.000001);
     float sampleNoise_A = noise_sum_abs(mainUv);
     sampleNoise_A = max(0., min(1., sampleNoise_A + brightness));
+    if(colorRev == 1){
+        sampleNoise_A = 1.0 - sampleNoise_A;
+    }
     gl_FragColor = vec4(vec3(sampleNoise_A), 1.);
 }`
 

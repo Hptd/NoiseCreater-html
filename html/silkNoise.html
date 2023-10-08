@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Noise Creater - voronoi water noise</title>
+    <title>Noise Creater - silk noise</title>
     <link rel="stylesheet" href="../css/sampleNoise.css">
     <link rel="stylesheet" href="../css/cloudNoise.css">
 </head>
@@ -74,7 +74,7 @@
             <span>整体明暗</span>
             <div class="right">
                 <span>==></span>
-                <input class="slider" id="brightness" type="range" min="-1" max="1" value="0" step="0.01" placeholder="默认值：1">
+                <input class="slider" id="brightness" type="range" min="-1" max="1" value="0" step="0.01">
                 <span> <== </span>
                 <button id="btnReBrightness">重置</button>
             </div>
@@ -84,49 +84,59 @@
             <span>亮度</span>
             <div class="right">
                 <span>==></span>
-                <input class="slider" id="onlyBrightness" type="range" min="0" max="1" value="0" step="0.01" placeholder="默认值：0">
+                <input class="slider" id="onlyBrightness" type="range" min="0.2" max="10" value="1" step="0.01">
                 <span> <== </span>
                 <button id="btnReOnlyBrightness">重置</button>
             </div>
         </div>
         <hr>
         <div class="inValue">
-            <span>对比度</span>
+            <span>细腻程度</span>
             <div class="right">
                 <span>==></span>
-                <input class="slider" id="contrast" type="range" min="0" max="1" value="0.4" step="0.01" placeholder="默认值：0.4">
+                <input class="slider" id="delicate" type="range" min="1" max="1.5" value="1.1" step="0.001">
                 <span> <== </span>
-                <button id="btnReContrast">重置</button>
+                <button id="btnReDelicate">重置</button>
             </div>
         </div>
         <hr>
         <div class="inValue">
-            <span>噪波细分程度</span>
+            <span>破碎程度</span>
             <div class="right">
                 <span>==></span>
-                <input id="subdivide" type="text" placeholder="默认值：3(整数)" value="3">
+                <input class="slider" id="broken" type="range" min="0" max="20" value="8" step="0.01">
                 <span> <== </span>
-                <button id="btnReSubdivide">重置</button>
+                <button id="btnReBroken">重置</button>
             </div>
         </div>
         <hr>
         <div class="inValue">
-            <span>单细胞密集度</span>
+            <span>细节层次</span>
             <div class="right">
                 <span>==></span>
-                <input class="slider" id="cellScale" type="range" min="0" max="4" value="2" step="0.01" placeholder="默认值：2">
+                <input class="slider" id="refrac" type="range" min="5" max="32" value="16" step="1">
                 <span> <== </span>
-                <button id="btnReCellScale">重置</button>
+                <button id="btnReRefrec">重置</button>
             </div>
         </div>
         <hr>
         <div class="inValue">
-            <span>纯白侵略度</span>
+            <span>游丝大小调整</span>
             <div class="right">
                 <span>==></span>
-                <input class="slider" id="whiteScale" type="range" min="0" max="8" value="0.5" step="0.01" placeholder="默认值：0.5">
+                <input class="slider" id="sharkX" type="range" min="0.3" max="10" value="1" step="0.001">
                 <span> <== </span>
-                <button id="btnReWhiteScale">重置</button>
+                <button id="btnReSharkX">重置</button>
+            </div>
+        </div>
+        <hr>
+        <div class="inValue">
+            <span>游丝黑白比例</span>
+            <div class="right">
+                <span>==></span>
+                <input class="slider" id="sharkY" type="range" min="3" max="40" value="8" step="1">
+                <span> <== </span>
+                <button id="btnReSharkY">重置</button>
             </div>
         </div>
         <hr>
@@ -168,6 +178,6 @@
     }
     </script>
 
-    <script type="module" src="../js/voronoiWaterNioseThreeJS.js"></script>
+    <script type="module" src="../js/silkNioseThreeJS.js"></script>
 </body>
 </html>

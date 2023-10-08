@@ -17,6 +17,7 @@ uniform float warp;
 uniform float colorGray2;
 uniform float colorGray3;
 uniform float colorGray4;
+uniform int colorRev;
 
 float random (in vec2 _st) {
     return fract(sin(dot(_st.xy,
@@ -72,7 +73,14 @@ void main(){
     color = mix(color,vec3(colorGray3),clamp(length(q),0.0,1.0)); // color3 0.3
     color = mix(color,vec3(colorGray4),clamp(length(r.x),0.0,1.0)); // color4 0.6
 
-    gl_FragColor = vec4((f*f*f+.6*f*f+.5*f)*color + brightness,1.);
+    color *= (f*f*f+.6*f*f+.5*f);
+    color = max(vec3(0.), min(vec3(1.), color + brightness));
+
+    if(colorRev == 1){
+        color = 1.0 - color;
+    }
+
+    gl_FragColor = vec4(color,1.);
 }`
 
 export default FragShader

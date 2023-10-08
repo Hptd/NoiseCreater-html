@@ -6,10 +6,12 @@ uniform float uvMoveY;
 uniform float uvScaleX;
 uniform float uvScaleY;
 uniform float brightness;
+uniform float iTime;
+uniform int colorRev;
 
 float noise(vec2 pos)
 {
-	return fract( sin( dot(pos*0.001 ,vec2(24.12357, 36.789) ) ) * 12345.123);	
+	return fract( sin( dot(pos*0.001 ,vec2(24.12357, 36.789) ) ) *(12345.123 + iTime));	
 }
 float smooth_noise(vec2 pos)
 {
@@ -48,6 +50,9 @@ void main(){
 	vec2 mainUv = vec2((vUv.x+uvMoveX)*uvScaleX, (vUv.y+uvMoveY)*uvScaleY);
     float perlinNoise = perlin_noise(mainUv*(uvScale+0.000001));
 	perlinNoise = max(0., min(1., perlinNoise + brightness));
+	if(colorRev == 1){
+		perlinNoise = 1.0 - perlinNoise;
+	}
     gl_FragColor = vec4(vec3(perlinNoise), 1.);
 }`
 
