@@ -11,7 +11,8 @@ const noiseList = [{src: "../images/sampleNoise.png", title: "Sample Noise", hre
                    {src: "../images/voroNoise.png", title: "voro Noise", href: "../html/voroNoise.html"},
                    {src: "../images/cellNoise_A.png", title: "cell Noise_A", href: "../html/cellNoise_A.html"},
                    {src: "../images/cellNoise_B.png", title: "cell Noise_B", href: "../html/cellNoise_B.html"},
-                   {src: "../images/cellNoise_C.png", title: "cell Noise_C", href: "../html/cellNoise_C.html"}
+                   {src: "../images/cellNoise_C.png", title: "cell Noise_C", href: "../html/cellNoise_C.html"},
+                   {src: "../images/squircleColorNoise.png", title: "squircle color Noise", href: "../html/squircleColorNoise.html"}
                 ]
 
 // 根据noiseList创建列表对象
