@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Noise Creater - cell noise_B</title>
+    <link rel="stylesheet" href="../css/sampleNoise.css">
+    <link rel="stylesheet" href="../css/cloudNoise.css">
+</head>
+<body>
+    <div class="params">
+        <div class="inValue">
+            <span>导出图片尺寸</span>
+            <div class="right">
+                <span>==></span>
+                <input id="downloadSize" type="text" placeholder="默认512" value="512">
+                <span> <== </span>
+                <button id="btnReSize">重置</button>
+            </div>
+        </div>
+        <hr>
+
+        <div class="inValue">
+            <span>噪波尺寸</span>
+            <div class="right">
+                <span>==></span>
+                <input id="scale" type="text" placeholder="默认：10" value="10">
+                <span> <== </span>
+                <button id="btnReScale">重置</button>
+            </div>
+        </div>
+        <hr>
+        <div class="inValue">
+            <span>噪波横向位移</span>
+            <div class="right">
+                <span>==></span>
+                <input id="moveX" type="text" placeholder="默认值：0(建议微调)" value="0">
+                <span> <== </span>
+                <button id="btnReMoveX">重置</button>
+            </div>
+        </div>
+        <hr>
+        <div class="inValue">
+            <span>噪波纵向位移</span>
+            <div class="right">
+                <span>==></span>
+                <input id="moveY" type="text" placeholder="默认值：0(建议微调)" value="0">
+                <span> <== </span>
+                <button id="btnReMoveY">重置</button>
+            </div>
+        </div>
+        <hr>
+        <div class="inValue">
+            <span>噪波横向尺寸</span>
+            <div class="right">
+                <span>==></span>
+                <input id="scaleX" type="text" placeholder="默认值：1" value="1">
+                <span> <== </span>
+                <button id="btnReScaleX">重置</button>
+            </div>
+        </div>
+        <hr>
+        <div class="inValue">
+            <span>噪波纵向尺寸</span>
+            <div class="right">
+                <span>==></span>
+                <input id="scaleY" type="text" placeholder="默认值：1" value="1">
+                <span> <== </span>
+                <button id="btnReScaleY">重置</button>
+            </div>
+        </div>
+        <hr>
+        <div class="inValue">
+            <span>整体明暗</span>
+            <div class="right">
+                <span>==></span>
+                <input class="slider" id="brightness" type="range" min="-1" max="1" value="0" step="0.01">
+                <span> <== </span>
+                <button id="btnReBrightness">重置</button>
+            </div>
+        </div>
+        <hr>
+        <div class="inValue">
+            <span>白色比例大小</span>
+            <div class="right">
+                <span>==></span>
+                <input id="whiteIntensity" type="text" placeholder="默认值：1.5(推荐值20)" value="1.5">
+                <span> <== </span>
+                <button id="btnReWhiteIntensity">重置</button>
+            </div>
+        </div>
+        <hr>
+        <div class="inValue">
+            <span>颜色取反</span>
+            <div class="right">
+                <span>==></span>
+                <input id="color-reverse" type="checkbox" style="width: 25px; height: 25px;">
+                <span> <== </span>
+            </div>
+        </div>
+        <hr>
+        <div class="inValue">
+            <span>开始 | 暂停</span>
+            <div class="right">
+                <span>==></span>
+                <input id="voronoi-noise-check" type="checkbox" checked="checked" style="width: 25px; height: 25px;">
+                <span> <== </span>
+            </div>
+        </div>
+        <hr>
+
+        <div class="sponsor">
+            <div class="sponsor-text">
+                <span>图片保存直接鼠标右键即可
+                    欢迎提供建议和意见，更欢迎商业合作：
+                    wz_ftf_offcial@163.com
+                    感觉不错，赞助一下吧（鞠躬）</span>
+            </div>
+            <img src="../images/wechat.png" alt="">
+        </div>
+    </div>
+
+    <script type="importmap">
+        {
+        "imports": {
+            "three": "../packages/node_modules/three/build/three.module.js"
+        }
+    }
+    </script>
+
+    <script type="module" src="../js/cellNiose_B_ThreeJS.js"></script>
+</body>
+</html>
