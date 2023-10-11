@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Noise Creater - grid noise</title>
+    <title>Noise Creater - circle noise_B</title>
     <link rel="stylesheet" href="../css/sampleNoise.css">
     <link rel="stylesheet" href="../css/cloudNoise.css">
 </head>
@@ -71,7 +71,7 @@
         </div>
         <hr>
         <div class="inValue">
-            <span>整体明暗</span>
+            <span>整体明暗(黑白模式)</span>
             <div class="right">
                 <span>==></span>
                 <input class="slider" id="brightness" type="range" min="-1" max="1" value="0" step="0.01">
@@ -81,22 +81,61 @@
         </div>
         <hr>
         <div class="inValue">
-            <span>单体最大尺寸</span>
+            <span>背景颜色-1</span>
             <div class="right">
                 <span>==></span>
-                <input class="slider" id="delicate" type="range" min="0.002" max="0.05" value="0.04" step="0.00001">
+                <input type="color" id="color-choose-1" value="#4C0F4C" style="width : 50px; height: 30px; border: none; padding: 0;">
                 <span> <== </span>
-                <button id="btnReDelicate">重置</button>
+                <button id="btnReColorChoose1">重置</button>
             </div>
         </div>
         <hr>
         <div class="inValue">
-            <span>旋转角度</span>
+            <span>背景颜色-2</span>
             <div class="right">
                 <span>==></span>
-                <input class="slider" id="warp" type="range" min="0" max="1.6" value="0" step="0.0001">
+                <input type="color" id="color-choose-2" value="#1A6680" style="width : 50px; height: 30px; border: none; padding: 0;">
                 <span> <== </span>
-                <button id="btnReWarp">重置</button>
+                <button id="btnReColorChoose2">重置</button>
+            </div>
+        </div>
+        <hr>
+        <div class="inValue">
+            <span>色相</span>
+            <div class="right">
+                <span>==></span>
+                <input class="slider" id="hue" type="range" min="0" max="1" value="0" step="0.001">
+                <span> <== </span>
+                <button id="btnReHue">重置</button>
+            </div>
+        </div>
+        <hr>
+        <div class="inValue">
+            <span>饱和度</span>
+            <div class="right">
+                <span>==></span>
+                <input class="slider" id="saturate" type="range" min="0" max="1.5" value="1" step="0.001">
+                <span> <== </span>
+                <button id="btnReSaturate">重置</button>
+            </div>
+        </div>
+        <hr>
+        <div class="inValue">
+            <span>亮度</span>
+            <div class="right">
+                <span>==></span>
+                <input class="slider" id="onlyBrightness" type="range" min="0" max="2" value="1" step="0.001">
+                <span> <== </span>
+                <button id="btnReOnlyBrightness">重置</button>
+            </div>
+        </div>
+        <hr>
+        <div class="inValue">
+            <span>黑白模式</span>
+            <div class="right">
+                <span>==></span>
+                <input id="color-remove" type="checkbox" style="width: 25px; height: 25px;">
+                <span> <== </span>
             </div>
         </div>
         <hr>
@@ -105,15 +144,6 @@
             <div class="right">
                 <span>==></span>
                 <input id="color-reverse" type="checkbox" style="width: 25px; height: 25px;">
-                <span> <== </span>
-            </div>
-        </div>
-        <hr>
-        <div class="inValue">
-            <span>开始旋转</span>
-            <div class="right">
-                <span>==></span>
-                <input id="rotate" type="checkbox" style="width: 25px; height: 25px;">
                 <span> <== </span>
             </div>
         </div>
@@ -147,6 +177,6 @@
     }
     </script>
 
-    <script type="module" src="../js/gridNioseThreeJS.js"></script>
+    <script type="module" src="../js/circleNiose_B_ThreeJS.js"></script>
 </body>
 </html>
