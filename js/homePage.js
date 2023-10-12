@@ -1,8 +1,14 @@
 const noiseList = [{src: "../images/sampleNoise.png", title: "Sample Noise", href: "../html/sampleNoise.html"},
+                   {src: "../images/sampleColorNoise.png", title: "Sample color Noise", href: "../html/sampleColorNoise.html"},
                    {src: "../images/cloudNoise.png", title: "Cloud Noise", href: "../html/cloudNoise.html"},
                    {src: "../images/sampleNoise_A.png", title: "sample Noise_A", href: "../html/sampleNoise_A.html"},
                    {src: "../images/sampleNoise_B.png", title: "sample Noise_B", href: "../html/sampleNoise_B.html"},
                    {src: "../images/voronoiWaterNoise.png", title: "voronoi Water Noise", href: "../html/voronoiWaterNoise.html"},
+                   {src: "../images/tileableWaterNoise.png", title: "tileable Water Noise", href: "../html/tileableWaterNoise.html"},
+                   {src: "../images/causticsWaterNoise.png", title: "caustics Water Noise", href: "../html/causticsWaterNoise.html"},
+                   {src: "../images/glareWaterNoise.png", title: "glare Water Noise", href: "../html/glareWaterNoise.html"},
+                   {src: "../images/forkedWaterNoise.png", title: "forked Water Noise", href: "../html/forkedWaterNoise.html"},
+                   {src: "../images/rainWaterNoise.png", title: "rain Water Noise", href: "../html/rainWaterNoise.html"},
                    {src: "../images/smokeNoise.png", title: "smoke Noise", href: "../html/smokeNoise.html"},
                    {src: "../images/honeycompNoise_A.png", title: "honeycomp Noise_A", href: "../html/honeycompNoise_A.html"},
                    {src: "../images/honeycompNoise_B.png", title: "honeycomp Noise_B", href: "../html/honeycompNoise_B.html"},
@@ -16,6 +22,8 @@ const noiseList = [{src: "../images/sampleNoise.png", title: "Sample Noise", hre
                    {src: "../images/circleNoise_A.png", title: "circle Noise_A", href: "../html/circleNoise_A.html"},
                    {src: "../images/circleNoise_B.png", title: "circle Noise_B", href: "../html/circleNoise_B.html"},
                    {src: "../images/circleNoise_C.png", title: "circle Noise_C", href: "../html/circleNoise_C.html"},
+                   {src: "../images/brushNoise_A.png", title: "brush Noise_A", href: "../html/brushNoise_A.html"},
+                   {src: "../images/brushNoise_B.png", title: "brush Noise_B", href: "../html/brushNoise_B.html"},
                 ]
 
 // 根据noiseList创建列表对象

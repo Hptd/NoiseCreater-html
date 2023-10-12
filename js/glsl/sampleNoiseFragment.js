@@ -1,10 +1,5 @@
 const FragShader = /*glsl*/`
 varying vec2 vUv;
-uniform float uvScale;
-uniform float uvMoveX;
-uniform float uvMoveY;
-uniform float uvScaleX;
-uniform float uvScaleY;
 
 float noise(vec2 pos)
 {
@@ -12,8 +7,8 @@ float noise(vec2 pos)
 }
 
 void main(){
-	vec2 mainUv = vec2((vUv.x+uvMoveX)*uvScaleX, (vUv.y+uvMoveY)*uvScaleY);
-    float sampleNoise = noise(mainUv*(uvScale+0.000001));
+	vec2 mainUv = vUv;
+    float sampleNoise = noise(mainUv*(10000.));
     gl_FragColor = vec4(vec3(sampleNoise), 1.);
 }`
 

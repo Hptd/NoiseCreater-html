@@ -1,6 +1,6 @@
 import * as THREE from "three" 
 import VertShader from "./glsl/noiseVertex.js"
-import FragShader from "./glsl/sampleNoiseFragment.js"
+import FragShader from "./glsl/sampleColorNoiseFragment.js"
 
 const downloadSize = document.querySelector("#downloadSize")
 const btnReSize = document.querySelector("#btnReSize")

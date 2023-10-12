@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Noise Creater - brush noise_B</title>
+    <link rel="stylesheet" href="../css/sampleNoise.css">
+    <link rel="stylesheet" href="../css/cloudNoise.css">
+</head>
+<body>
+    <div class="params">
+        <div class="inValue">
+            <span>导出图片尺寸</span>
+            <div class="right">
+                <span>==></span>
+                <input id="downloadSize" type="text" placeholder="默认512" value="512">
+                <span> <== </span>
+                <button id="btnReSize">重置</button>
+            </div>
+        </div>
+        <hr>
+
+        <div class="inValue">
+            <span>每页包含行列数量</span>
+            <div class="right">
+                <span>==></span>
+                <input id="scale" type="text" placeholder="默认：1" value="1">
+                <span> <== </span>
+                <button id="btnReScale">重置</button>
+            </div>
+        </div>
+        <hr>
+        <div class="inValue">
+            <span>横向页码</span>
+            <div class="right">
+                <span>==></span>
+                <input id="moveX" type="text" placeholder="默认值：0" value="0">
+                <span> <== </span>
+                <button id="btnReMoveX">重置</button>
+            </div>
+        </div>
+        <hr>
+        <div class="inValue">
+            <span>纵向页码</span>
+            <div class="right">
+                <span>==></span>
+                <input id="moveY" type="text" placeholder="默认值：0" value="0">
+                <span> <== </span>
+                <button id="btnReMoveY">重置</button>
+            </div>
+        </div>
+        <hr>
+        <div class="inValue">
+            <span>噪波横向尺寸</span>
+            <div class="right">
+                <span>==></span>
+                <input id="scaleX" type="text" placeholder="默认值：1" value="1">
+                <span> <== </span>
+                <button id="btnReScaleX">重置</button>
+            </div>
+        </div>
+        <hr>
+        <div class="inValue">
+            <span>噪波纵向尺寸</span>
+            <div class="right">
+                <span>==></span>
+                <input id="scaleY" type="text" placeholder="默认值：1" value="1">
+                <span> <== </span>
+                <button id="btnReScaleY">重置</button>
+            </div>
+        </div>
+        <hr>
+        <div class="inValue">
+            <span>整体明暗</span>
+            <div class="right">
+                <span>==></span>
+                <input class="slider" id="brightness" type="range" min="-1" max="1" value="0" step="0.01">
+                <span> <== </span>
+                <button id="btnReBrightness">重置</button>
+            </div>
+        </div>
+        <hr>
+        <div class="inValue">
+            <span>形变程度</span>
+            <div class="right">
+                <span>==></span>
+                <input class="slider" id="sharkX" type="range" min="0.01" max="2" value="0.5" step="0.001">
+                <span> <== </span>
+                <button id="btnReSharkX">重置</button>
+            </div>
+        </div>
+        <hr>
+        <div class="inValue">
+            <span>背景颜色</span>
+            <div class="right">
+                <span>==></span>
+                <input type="color" id="color-choose-1" value="#000000" style="width : 50px; height: 30px; border: none; padding: 0;">
+                <span> <== </span>
+                <button id="btnReColorChoose1">重置</button>
+            </div>
+        </div>
+        <hr>
+        <div class="inValue">
+            <span>笔刷颜色</span>
+            <div class="right">
+                <span>==></span>
+                <input type="color" id="color-choose-2" value="#ffffff" style="width : 50px; height: 30px; border: none; padding: 0;">
+                <span> <== </span>
+                <button id="btnReColorChoose2">重置</button>
+            </div>
+        </div>
+        <hr>
+        <div class="sponsor">
+            <div class="sponsor-text">
+                <span>数值介绍:
+                    每页包含行列数量：显示总个数 = 输入数值的平方；
+                    横向页码：以当前每页显示数量作为一页，+1 即向后翻页；
+                    纵向页码：以当前每页显示数量作为一页，+1 即向上翻页；
+
+                    举例使用说明：
+                    当 “每页包含行列数量 = 3”，此时每页有9个结果；
+                    每一页的左下角噪波坐标为(0, 0);
+                    此页无满意结果，“横向页码 = 1”(即从0变为1)；
+                    此时对本页坐标为(1, 1)的噪波满意，选中操作如下：
+                    0. 记录值：“每页包含行列数量” | “横向页码” | “纵向页码”；
+                    1. 重置：“每页包含行列数量” | “横向页码” | “纵向页码”；
+                    2. 横向坐标 = “每页包含行列数量” * “横向页码” + 1；
+                    3. 纵向坐标 = “每页包含行列数量” * “纵向页码” + 1；
+                    4.按照公式计算，此时输入：
+                    “横向页码” = 横向坐标；“纵向页码” = 纵向坐标；
+                    当前案例结果为：“横向页码” = 4；“纵向页码” = 1；
+                </span>
+            </div>
+        </div>
+        <hr>
+        <div class="sponsor">
+            <div class="sponsor-text">
+                <span>图片保存直接鼠标右键即可
+                    欢迎提供建议和意见，更欢迎商业合作：
+                    wz_ftf_offcial@163.com
+                    感觉不错，赞助一下吧（鞠躬）</span>
+            </div>
+            <img src="../images/wechat.png" alt="">
+        </div>
+    </div>
+
+    <script type="importmap">
+        {
+        "imports": {
+            "three": "../packages/node_modules/three/build/three.module.js"
+        }
+    }
+    </script>
+
+    <script type="module" src="../js/brushNiose_B_ThreeJS.js"></script>
+</body>
+</html>
