@@ -108,7 +108,13 @@
             </div>
         </div>
         <hr>
-
+        <div class="videoOut">
+            <button style="margin:auto 30px;" id="videoStart">开始录制</button>
+            <button style="margin:auto 30px auto 0px;" id="videoStop">结束录制</button>
+            <span style="opacity: 0.4;">默认25帧/秒</span>
+            <span style="opacity: 0.4; display: none; margin-left: 30px;" id="timeFlag">正在录制...</span>
+        </div>
+        <hr>
         <div class="sponsor">
             <div class="sponsor-text">
                 <span>图片保存直接鼠标右键即可
@@ -127,7 +133,7 @@
         }
     }
     </script>
-
+    <script data-main="../packages/node_modules/file-saver/dist/FileSaver.js" src="../packages/node_modules/requirejs/require.js"></script>
     <script type="module" src="../js/voroNioseThreeJS.js"></script>
 </body>
 </html>

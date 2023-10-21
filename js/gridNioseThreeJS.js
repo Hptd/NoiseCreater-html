@@ -1,4 +1,4 @@
-import * as THREE from "three" 
+import * as THREE from "three"
 import VertShader from "./glsl/noiseVertex.js"
 import FragShader from "./glsl/gridNoiseFragment.js"
 
@@ -8,20 +8,20 @@ let width = +downloadSize.value
 let height = +downloadSize.value
 
 const scene = new THREE.Scene()
-const camera = new THREE.PerspectiveCamera(75, width/height, 0.1, 1000)
+const camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000)
 const renderer = new THREE.WebGLRenderer()
 renderer.setSize(width, height)
 
 // 设置导出图片尺寸
 downloadSize.addEventListener('input', (e) => {
     width = height = +e.target.value
-    camera.aspect = width/height
+    camera.aspect = width / height
     renderer.setSize(width, height)
 })
 // 按钮重置导出画布尺寸
 btnReSize.addEventListener('click', () => {
     width = height = 512
-    camera.aspect = width/height
+    camera.aspect = width / height
     renderer.setSize(width, height)
     downloadSize.value = 512
 })
@@ -62,31 +62,31 @@ const materialPlane = new THREE.ShaderMaterial({
     vertexShader: VertShader,
     fragmentShader: FragShader,
     uniforms: {
-        uvScale:   {value:   +inputScele.value     },
-        uvMoveX:   {value:   +inputMoveX.value     },
-        uvMoveY:   {value:   +inputMoveY.value     },
-        uvScaleX:  {value:   +inputScaleX.value    },
-        uvScaleY:  {value:   +inputScaleY.value    },
-        brightness:{value:   +inputBrightness.value},
-        iTime:     {value:   +iTime},
-        delicate:  {value:   +inputDelicate.value},
-        warp:      {value:   +inputWarp.value},
-        colorRev:  {value:   colorRev},
-        rotate:    {value:   rotate}
+        uvScale: { value: +inputScele.value },
+        uvMoveX: { value: +inputMoveX.value },
+        uvMoveY: { value: +inputMoveY.value },
+        uvScaleX: { value: +inputScaleX.value },
+        uvScaleY: { value: +inputScaleY.value },
+        brightness: { value: +inputBrightness.value },
+        iTime: { value: +iTime },
+        delicate: { value: +inputDelicate.value },
+        warp: { value: +inputWarp.value },
+        colorRev: { value: colorRev },
+        rotate: { value: rotate }
     }
 })
 // 监听传参数
 params.addEventListener('input', (e) => {
-    if(e.target.nodeName === "INPUT"){
+    if (e.target.nodeName === "INPUT") {
         // 直接重新传递所有材质球的input参数
-        materialPlane.uniforms.uvScale.value    = +inputScele.value,
-        materialPlane.uniforms.uvMoveX.value    = +inputMoveX.value,
-        materialPlane.uniforms.uvMoveY.value    = +inputMoveY.value,
-        materialPlane.uniforms.uvScaleX.value   = +inputScaleX.value,
-        materialPlane.uniforms.uvScaleY.value   = +inputScaleY.value,
-        materialPlane.uniforms.brightness.value = +inputBrightness.value,
-        materialPlane.uniforms.delicate.value   = +inputDelicate.value,
-        materialPlane.uniforms.warp.value       = +inputWarp.value
+        materialPlane.uniforms.uvScale.value = +inputScele.value,
+            materialPlane.uniforms.uvMoveX.value = +inputMoveX.value,
+            materialPlane.uniforms.uvMoveY.value = +inputMoveY.value,
+            materialPlane.uniforms.uvScaleX.value = +inputScaleX.value,
+            materialPlane.uniforms.uvScaleY.value = +inputScaleY.value,
+            materialPlane.uniforms.brightness.value = +inputBrightness.value,
+            materialPlane.uniforms.delicate.value = +inputDelicate.value,
+            materialPlane.uniforms.warp.value = +inputWarp.value
     }
 })
 // 开关Noise动画模式
@@ -94,11 +94,11 @@ let timeClockId = setInterval(() => {
     iTime += 0.01
     materialPlane.uniforms.iTime.value = iTime
 }, 10);
-inputCheckBox.addEventListener('change', (e) =>{
-    if(inputCheckBox.checked === false){
+inputCheckBox.addEventListener('change', (e) => {
+    if (inputCheckBox.checked === false) {
         clearInterval(timeClockId)
     }
-    else{
+    else {
         clearInterval(timeClockId)
         timeClockId = setInterval(() => {
             iTime += 0.01
@@ -109,24 +109,24 @@ inputCheckBox.addEventListener('change', (e) =>{
 
 // 颜色取反按钮
 inputColorReserve.addEventListener('change', () => {
-    if(inputColorReserve.checked){
+    if (inputColorReserve.checked) {
         materialPlane.uniforms.colorRev.value = 1
     }
-    else{
+    else {
         materialPlane.uniforms.colorRev.value = 0
     }
 })
 // 开启旋转
 inputRotateAni.addEventListener('change', () => {
-    if(inputRotateAni.checked){
+    if (inputRotateAni.checked) {
         materialPlane.uniforms.rotate.value = 1
-    }else{
+    } else {
         materialPlane.uniforms.rotate.value = 0
     }
 })
 
 // 按钮重置参数
-btnReScale.addEventListener('click', () =>{
+btnReScale.addEventListener('click', () => {
     materialPlane.uniforms.uvScale.value = 1
     inputScele.value = 1
 })
@@ -164,6 +164,42 @@ scene.add(plane)
 
 camera.position.z = 6.5
 
+// 视频录制模块
+const btnVideoStart = document.querySelector("#videoStart")
+const btnVideoStop = document.querySelector("#videoStop")
+
+const canvas = document.querySelector("canvas")
+const timeFlag = document.querySelector("#timeFlag")
+
+let chunks = new Set()
+const mediaStream = canvas.captureStream(25) // 设置帧频率(FPS)
+const mediaRecord = new MediaRecorder(mediaStream, {
+    videoBitsPerSecond: 8500000
+})
+mediaRecord.ondataavailable = (e) => { // 接收数据
+    chunks.add(e.data)
+}
+let timerClock = 10
+btnVideoStart.addEventListener('click', () => {
+    // 每次开始之前清空上次结果
+    chunks.clear()
+    mediaRecord.start(40)
+    timeFlag.style.display = "inline"
+    const startTime = Date.now()
+    timerClock = setInterval(() => {
+        timeFlag.innerHTML = `已录制: ${parseInt((Date.now()-startTime)/1000)} 秒`
+    }, 1000);
+    
+})
+btnVideoStop.addEventListener('click', () => {
+    mediaRecord.stop()
+    const videoBlob = new Blob(chunks, { 'type': 'video/mp4' })
+    clearInterval(timerClock)
+    saveAs(videoBlob, 'Cell Noise B.mp4')
+    timeFlag.style.display = "none"
+    timeFlag.innerHTML = "正在录制..."
+})
+
 setInterval(() => {
     renderer.render(scene, camera)
-}, 100);
+}, 40)

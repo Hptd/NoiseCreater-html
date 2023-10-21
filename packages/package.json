@@ -10,6 +10,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "file-saver": "^2.0.5",
+    "requirejs": "^2.3.6",
     "three": "^0.156.0"
   }
 }

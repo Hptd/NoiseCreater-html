@@ -172,7 +172,41 @@ const plane = new THREE.Mesh(planeGeo, materialPlane)
 scene.add(plane)
 
 camera.position.z = 6.5
+// 视频录制模块
+const btnVideoStart = document.querySelector("#videoStart")
+const btnVideoStop = document.querySelector("#videoStop")
 
+const canvas = document.querySelector("canvas")
+const timeFlag = document.querySelector("#timeFlag")
+
+let chunks = new Set()
+const mediaStream = canvas.captureStream(25) // 设置帧频率(FPS)
+const mediaRecord = new MediaRecorder(mediaStream, {
+    videoBitsPerSecond: 8500000
+})
+mediaRecord.ondataavailable = (e) => { // 接收数据
+    chunks.add(e.data)
+}
+let timerClock = 10
+btnVideoStart.addEventListener('click', () => {
+    // 每次开始之前清空上次结果
+    chunks.clear()
+    mediaRecord.start(40)
+    timeFlag.style.display = "inline"
+    const startTime = Date.now()
+    timerClock = setInterval(() => {
+        timeFlag.innerHTML = `已录制: ${parseInt((Date.now()-startTime)/1000)} 秒`
+    }, 1000);
+    
+})
+btnVideoStop.addEventListener('click', () => {
+    mediaRecord.stop()
+    const videoBlob = new Blob(chunks, { 'type': 'video/mp4' })
+    clearInterval(timerClock)
+    saveAs(videoBlob, 'Squircle Color Noise.mp4')
+    timeFlag.style.display = "none"
+    timeFlag.innerHTML = "正在录制..."
+})
 setInterval(() => {
     renderer.render(scene, camera)
-}, 100);
+}, 40);
