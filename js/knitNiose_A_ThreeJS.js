@@ -1,6 +1,6 @@
 import * as THREE from "three" 
 import VertShader from "./glsl/noiseVertex.js"
-import FragShader from "./glsl/honeycompNoise_B_Fragment.js"
+import FragShader from "./glsl/knitNoise_A_Fragment.js"
 
 const downloadSize = document.querySelector("#downloadSize")
 const btnReSize = document.querySelector("#btnReSize")
@@ -37,13 +37,14 @@ const inputMoveY = document.querySelector('#moveY')
 const inputScaleX = document.querySelector("#scaleX")
 const inputScaleY = document.querySelector("#scaleY")
 const inputBrightness = document.querySelector("#brightness")
-const inputDelicate = document.querySelector("#delicate")
-const inputBroken = document.querySelector("#broken")
+const inputOnlyBri = document.querySelector("#onlyBrightness")
+const inputHue = document.querySelector("#hue")
+const inputSaturate = document.querySelector("#saturate")
+const inputSharkX = document.querySelector("#sharkX")
+const inputSharkY = document.querySelector("#sharkY")
 
 const inputCheckBox = document.querySelector("#voronoi-noise-check")
-const inputColorReserve = document.querySelector("#color-reverse")
 let iTime = 0;
-let colorRev = 0;
 
 const params = document.querySelector(".params")
 const btnReScale = document.querySelector("#btnReScale")
@@ -52,8 +53,11 @@ const btnReMoveY = document.querySelector("#btnReMoveY")
 const btnReScaleX = document.querySelector("#btnReScaleX")
 const btnReScaleY = document.querySelector("#btnReScaleY")
 const btnReBrightness = document.querySelector("#btnReBrightness")
-const btnReDelicate = document.querySelector("#btnReDelicate")
-const btnReBroken = document.querySelector("#btnReBroken")
+const btnReOnlyBri = document.querySelector("#btnReOnlyBrightness")
+const btnReHue = document.querySelector("#btnReHue")
+const btnReSaturate = document.querySelector("#btnReSaturate")
+const btnReSharkX = document.querySelector("#btnReSharkX")
+const btnReSharkY = document.querySelector("#btnReSharkY")
 
 // 传参列表
 const materialPlane = new THREE.ShaderMaterial({
@@ -67,9 +71,12 @@ const materialPlane = new THREE.ShaderMaterial({
         uvScaleY:  {value:   +inputScaleY.value    },
         brightness:{value:   +inputBrightness.value},
         iTime:     {value:   +iTime},
-        delicate:  {value:   +inputDelicate.value},
-        broken:    {value:   +inputBroken.value},
-        colorRev:  {value:   colorRev}
+        onlyBri:   {value:   +inputOnlyBri.value},
+        sharkX:    {value:   +inputSharkX.value},
+        sharkY:    {value:   +inputSharkY.value},
+        hue:  {value:   +inputHue.value},
+        saturate:  {value:   +inputSaturate.value},
+        timeStart: {value:   inputCheckBox.checked}
     }
 })
 // 监听传参数
@@ -82,8 +89,11 @@ params.addEventListener('input', (e) => {
         materialPlane.uniforms.uvScaleX.value   = +inputScaleX.value,
         materialPlane.uniforms.uvScaleY.value   = +inputScaleY.value,
         materialPlane.uniforms.brightness.value = +inputBrightness.value,
-        materialPlane.uniforms.delicate.value   = +inputDelicate.value,
-        materialPlane.uniforms.broken.value     = +inputBroken.value
+        materialPlane.uniforms.onlyBri.value    = +inputOnlyBri.value,
+        materialPlane.uniforms.sharkX.value     = +inputSharkX.value,
+        materialPlane.uniforms.sharkY.value     = +inputSharkY.value,
+        materialPlane.uniforms.hue.value   = +inputHue.value,
+        materialPlane.uniforms.saturate.value   = +inputSaturate.value
     }
 })
 // 开关Noise动画模式
@@ -94,30 +104,22 @@ let timeClockId = setInterval(() => {
 inputCheckBox.addEventListener('change', (e) =>{
     if(inputCheckBox.checked === false){
         clearInterval(timeClockId)
+        materialPlane.uniforms.timeStart.value = false
     }
     else{
         clearInterval(timeClockId)
         timeClockId = setInterval(() => {
             iTime += 0.01
             materialPlane.uniforms.iTime.value = iTime
+            materialPlane.uniforms.timeStart.value = true
         }, 10);
-    }
-})
-
-// 颜色取反按钮
-inputColorReserve.addEventListener('change', () => {
-    if(inputColorReserve.checked){
-        materialPlane.uniforms.colorRev.value = 1
-    }
-    else{
-        materialPlane.uniforms.colorRev.value = 0
     }
 })
 
 // 按钮重置参数
 btnReScale.addEventListener('click', () =>{
-    materialPlane.uniforms.uvScale.value = 30
-    inputScele.value = 30
+    materialPlane.uniforms.uvScale.value = 1
+    inputScele.value = 1
 })
 btnReMoveX.addEventListener('click', () => {
     materialPlane.uniforms.uvMoveX.value = 0
@@ -139,13 +141,25 @@ btnReBrightness.addEventListener('click', () => {
     materialPlane.uniforms.brightness.value = 0
     inputBrightness.value = 0
 })
-btnReDelicate.addEventListener('click', () => {
-    materialPlane.uniforms.delicate.value = 3
-    inputDelicate.value = 3
+btnReOnlyBri.addEventListener('click', () => {
+    materialPlane.uniforms.onlyBri.value = 0
+    inputOnlyBri.value = 0
 })
-btnReBroken.addEventListener('click', () => {
-    materialPlane.uniforms.broken.value = 2
-    inputBroken.value = 2
+btnReHue.addEventListener('click', () => {
+    materialPlane.uniforms.hue.value = 0.5
+    inputHue.value = 0.5
+})
+btnReSaturate.addEventListener('click', () => {
+    materialPlane.uniforms.saturate.value = 2
+    inputSaturate.value = 2
+})
+btnReSharkX.addEventListener('click', () => {
+    materialPlane.uniforms.sharkX.value = 0.5
+    inputSharkX.value = 0.5
+})
+btnReSharkY.addEventListener('click', () => {
+    materialPlane.uniforms.sharkY.value = 0.7
+    inputSharkY.value = 0.7
 })
 
 const plane = new THREE.Mesh(planeGeo, materialPlane)
@@ -184,7 +198,7 @@ btnVideoStop.addEventListener('click', () => {
     mediaRecord.stop()
     const videoBlob = new Blob(chunks, { 'type': 'video/mp4' })
     clearInterval(timerClock)
-    saveAs(videoBlob, 'Honeycomp Noise B.mp4')
+    saveAs(videoBlob, 'Knit Noise A.mp4')
     timeFlag.style.display = "none"
     timeFlag.innerHTML = "正在录制..."
 })

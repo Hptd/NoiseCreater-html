@@ -176,7 +176,7 @@ btnVideoStop.addEventListener('click', () => {
     mediaRecord.stop()
     const videoBlob = new Blob(chunks, { 'type': 'video/mp4' })
     clearInterval(timerClock)
-    saveAs(videoBlob, 'Cell Noise B.mp4')
+    saveAs(videoBlob, 'Cell Noise A.mp4')
     timeFlag.style.display = "none"
     timeFlag.innerHTML = "正在录制..."
 })

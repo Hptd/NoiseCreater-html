@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Noise Creater - circle noise_C</title>
+    <title>Noise Creater - knit noise_A</title>
     <link rel="stylesheet" href="../css/sampleNoise.css">
     <link rel="stylesheet" href="../css/cloudNoise.css">
 </head>
@@ -71,7 +71,7 @@
         </div>
         <hr>
         <div class="inValue">
-            <span>整体明暗(黑白模式)</span>
+            <span>前景明暗</span>
             <div class="right">
                 <span>==></span>
                 <input class="slider" id="brightness" type="range" min="-1" max="1" value="0" step="0.01">
@@ -81,90 +81,52 @@
         </div>
         <hr>
         <div class="inValue">
-            <span>单球矩阵切割</span>
+            <span>背景明暗</span>
             <div class="right">
                 <span>==></span>
-                <input class="slider" id="sharkX" type="range" min="1" max="10" value="1" step="1">
-                <span> <== </span>
-                <button id="btnReSharkX">重置</button>
-            </div>
-        </div>
-        <hr>
-        <div class="inValue">
-            <span>错位运动调整</span>
-            <div class="right">
-                <span>==></span>
-                <input class="slider" id="sharkY" type="range" min="1" max="10" value="2" step="1">
-                <span> <== </span>
-                <button id="btnReSharkY">重置</button>
-            </div>
-        </div>
-        <hr>
-        <div class="inValue">
-            <span>圆圈尺寸</span>
-            <div class="right">
-                <span>==></span>
-                <input class="slider" id="hue" type="range" min="0.1" max="0.5" value="0.5" step="0.001">
-                <span> <== </span>
-                <button id="btnReHue">重置</button>
-            </div>
-        </div>
-        <hr>
-        <div class="inValue">
-            <span>去除小圆圈</span>
-            <div class="right">
-                <span>==></span>
-                <input class="slider" id="saturate" type="range" min="0" max="0.5" value="0.1" step="0.001">
-                <span> <== </span>
-                <button id="btnReSaturate">重置</button>
-            </div>
-        </div>
-        <hr>
-        <div class="inValue">
-            <span>圆圈厚度</span>
-            <div class="right">
-                <span>==></span>
-                <input class="slider" id="onlyBrightness" type="range" min="0" max="0.9" value="0.1" step="0.001">
+                <input class="slider" id="onlyBrightness" type="range" min="-1" max="2" value="0" step="0.01">
                 <span> <== </span>
                 <button id="btnReOnlyBrightness">重置</button>
             </div>
         </div>
         <hr>
         <div class="inValue">
-            <span>背景颜色</span>
+            <span>形变 X(请关闭动画)</span>
             <div class="right">
                 <span>==></span>
-                <input type="color" id="color-choose-1" value="#202b33" style="width : 50px; height: 30px; border: none; padding: 0;">
+                <input class="slider" id="sharkX" type="range" min="0.01" max="1" value="0.5" step="0.001">
                 <span> <== </span>
-                <button id="btnReColorChoose1">重置</button>
+                <button id="btnReSharkX">重置</button>
             </div>
         </div>
         <hr>
         <div class="inValue">
-            <span>圆圈颜色</span>
+            <span>形变 Y(请关闭动画)</span>
             <div class="right">
                 <span>==></span>
-                <input type="color" id="color-choose-2" value="#ebf1f5" style="width : 50px; height: 30px; border: none; padding: 0;">
+                <input class="slider" id="sharkY" type="range" min="0" max="1" value="0.7" step="0.001">
                 <span> <== </span>
-                <button id="btnReColorChoose2">重置</button>
+                <button id="btnReSharkY">重置</button>
             </div>
         </div>
         <hr>
         <div class="inValue">
-            <span>黑白模式</span>
+            <span>相位扭曲</span>
             <div class="right">
                 <span>==></span>
-                <input id="color-remove" type="checkbox" style="width: 25px; height: 25px;">
+                <input class="slider" id="hue" type="range" min="0" max="6" value="0.5" step="0.1">
                 <span> <== </span>
+                <button id="btnReHue">重置</button>
             </div>
         </div>
         <hr>
         <div class="inValue">
-            <span>颜色取反</span>
+            <span>层次细分</span>
             <div class="right">
                 <span>==></span>
-                <input id="color-reverse" type="checkbox" style="width: 25px; height: 25px;">
+                <input class="slider" id="saturate" type="range" min="0.1" max="4" value="2" step="0.01">
                 <span> <== </span>
+                <button id="btnReSaturate">重置</button>
             </div>
         </div>
         <hr>
@@ -203,6 +165,6 @@
     }
     </script>
     <script data-main="../packages/node_modules/file-saver/dist/FileSaver.js" src="../packages/node_modules/requirejs/require.js"></script>
-    <script type="module" src="../js/circleNiose_C_ThreeJS.js"></script>
+    <script type="module" src="../js/knitNiose_A_ThreeJS.js"></script>
 </body>
 </html>

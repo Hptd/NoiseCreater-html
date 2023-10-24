@@ -22,6 +22,12 @@ const noiseList = [{src: "../images/sampleNoise.png", title: "Sample Noise", hre
                    {src: "../images/circleNoise_A.png", title: "circle Noise_A", href: "../html/circleNoise_A.html"},
                    {src: "../images/circleNoise_B.png", title: "circle Noise_B", href: "../html/circleNoise_B.html"},
                    {src: "../images/circleNoise_C.png", title: "circle Noise_C", href: "../html/circleNoise_C.html"},
+                   {src: "../images/knitNoise_A.png", title: "knit Noise_A", href: "../html/knitNoise_A.html"},
+                   {src: "../images/knitNoise_B.png", title: "knit Noise_B", href: "../html/knitNoise_B.html"},
+                   {src: "../images/knitNoise_C.png", title: "knit Noise_C", href: "../html/knitNoise_C.html"},
+                   {src: "../images/knitNoise_D.png", title: "knit Noise_D", href: "../html/knitNoise_D.html"},
+                   {src: "../images/knitNoise_E.png", title: "knit Noise_E", href: "../html/knitNoise_E.html"},
+                   {src: "../images/knitNoise_F.png", title: "knit Noise_F", href: "../html/knitNoise_F.html"},
                    {src: "../images/brushNoise_A.png", title: "brush Noise_A", href: "../html/brushNoise_A.html"},
                    {src: "../images/brushNoise_B.png", title: "brush Noise_B", href: "../html/brushNoise_B.html"},
                 ]

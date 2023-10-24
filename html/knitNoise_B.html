@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Noise Creater - circle noise_C</title>
+    <title>Noise Creater - knit noise_B</title>
     <link rel="stylesheet" href="../css/sampleNoise.css">
     <link rel="stylesheet" href="../css/cloudNoise.css">
 </head>
@@ -81,52 +81,42 @@
         </div>
         <hr>
         <div class="inValue">
-            <span>单球矩阵切割</span>
+            <span>边缘调整参数 A</span>
             <div class="right">
                 <span>==></span>
-                <input class="slider" id="sharkX" type="range" min="1" max="10" value="1" step="1">
+                <input class="slider" id="sharkX" type="range" min="0" max="1" value="0.45" step="0.001">
                 <span> <== </span>
                 <button id="btnReSharkX">重置</button>
             </div>
         </div>
         <hr>
         <div class="inValue">
-            <span>错位运动调整</span>
+            <span>边缘调整参数 B</span>
             <div class="right">
                 <span>==></span>
-                <input class="slider" id="sharkY" type="range" min="1" max="10" value="2" step="1">
+                <input class="slider" id="sharkY" type="range" min="0" max="1" value="0.2" step="0.001">
                 <span> <== </span>
                 <button id="btnReSharkY">重置</button>
             </div>
         </div>
         <hr>
         <div class="inValue">
-            <span>圆圈尺寸</span>
+            <span>边缘调整参数 C</span>
             <div class="right">
                 <span>==></span>
-                <input class="slider" id="hue" type="range" min="0.1" max="0.5" value="0.5" step="0.001">
+                <input class="slider" id="hue" type="range" min="0.01" max="1" value="0.15" step="0.001">
                 <span> <== </span>
                 <button id="btnReHue">重置</button>
             </div>
         </div>
         <hr>
         <div class="inValue">
-            <span>去除小圆圈</span>
+            <span>编织样式</span>
             <div class="right">
                 <span>==></span>
-                <input class="slider" id="saturate" type="range" min="0" max="0.5" value="0.1" step="0.001">
+                <input class="slider" id="saturate" type="range" min="1" max="10" value="2" step="1">
                 <span> <== </span>
                 <button id="btnReSaturate">重置</button>
-            </div>
-        </div>
-        <hr>
-        <div class="inValue">
-            <span>圆圈厚度</span>
-            <div class="right">
-                <span>==></span>
-                <input class="slider" id="onlyBrightness" type="range" min="0" max="0.9" value="0.1" step="0.001">
-                <span> <== </span>
-                <button id="btnReOnlyBrightness">重置</button>
             </div>
         </div>
         <hr>
@@ -134,19 +124,29 @@
             <span>背景颜色</span>
             <div class="right">
                 <span>==></span>
-                <input type="color" id="color-choose-1" value="#202b33" style="width : 50px; height: 30px; border: none; padding: 0;">
+                <input type="color" id="color-choose-1" value="#ffffff" style="width : 50px; height: 30px; border: none; padding: 0;">
                 <span> <== </span>
                 <button id="btnReColorChoose1">重置</button>
             </div>
         </div>
         <hr>
         <div class="inValue">
-            <span>圆圈颜色</span>
+            <span>编织杠颜色</span>
             <div class="right">
                 <span>==></span>
-                <input type="color" id="color-choose-2" value="#ebf1f5" style="width : 50px; height: 30px; border: none; padding: 0;">
+                <input type="color" id="color-choose-2" value="#ffc0e6" style="width : 50px; height: 30px; border: none; padding: 0;">
                 <span> <== </span>
                 <button id="btnReColorChoose2">重置</button>
+            </div>
+        </div>
+        <hr>
+        <div class="inValue">
+            <span>编织边缘色</span>
+            <div class="right">
+                <span>==></span>
+                <input type="color" id="color-choose-3" value="#000000" style="width : 50px; height: 30px; border: none; padding: 0;">
+                <span> <== </span>
+                <button id="btnReColorChoose3">重置</button>
             </div>
         </div>
         <hr>
@@ -168,22 +168,6 @@
             </div>
         </div>
         <hr>
-        <div class="inValue">
-            <span>开始 | 暂停</span>
-            <div class="right">
-                <span>==></span>
-                <input id="voronoi-noise-check" type="checkbox" checked="checked" style="width: 25px; height: 25px;">
-                <span> <== </span>
-            </div>
-        </div>
-        <hr>
-        <div class="videoOut">
-            <button style="margin:auto 30px;" id="videoStart">开始录制</button>
-            <button style="margin:auto 30px auto 0px;" id="videoStop">结束录制</button>
-            <span style="opacity: 0.4;">默认25帧/秒</span>
-            <span style="opacity: 0.4; display: none; margin-left: 30px;" id="timeFlag">正在录制...</span>
-        </div>
-        <hr>
         <div class="sponsor">
             <div class="sponsor-text">
                 <span>图片保存直接鼠标右键即可
@@ -202,7 +186,6 @@
         }
     }
     </script>
-    <script data-main="../packages/node_modules/file-saver/dist/FileSaver.js" src="../packages/node_modules/requirejs/require.js"></script>
-    <script type="module" src="../js/circleNiose_C_ThreeJS.js"></script>
+    <script type="module" src="../js/knitNiose_B_ThreeJS.js"></script>
 </body>
 </html>
