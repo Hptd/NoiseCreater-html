@@ -1,4 +1,5 @@
-const noiseList = [{src: "../images/sampleNoise.png", title: "Sample Noise", href: "../html/sampleNoise.html"},
+const noiseList = [{src: "../images/thanks.png", title: "致谢名单", href: "../html/thanksList.html"},
+                   {src: "../images/sampleNoise.png", title: "Sample Noise", href: "../html/sampleNoise.html"},
                    {src: "../images/sampleColorNoise.png", title: "Sample color Noise", href: "../html/sampleColorNoise.html"},
                    {src: "../images/cloudNoise.png", title: "Cloud Noise", href: "../html/cloudNoise.html"},
                    {src: "../images/sampleNoise_A.png", title: "sample Noise_A", href: "../html/sampleNoise_A.html"},
@@ -28,6 +29,8 @@ const noiseList = [{src: "../images/sampleNoise.png", title: "Sample Noise", hre
                    {src: "../images/knitNoise_D.png", title: "knit Noise_D", href: "../html/knitNoise_D.html"},
                    {src: "../images/knitNoise_E.png", title: "knit Noise_E", href: "../html/knitNoise_E.html"},
                    {src: "../images/knitNoise_F.png", title: "knit Noise_F", href: "../html/knitNoise_F.html"},
+                   {src: "../images/fireNoise_A.png", title: "fire Noise_A", href: "../html/fireNoise_A.html"},
+                   {src: "../images/fireNoise_B.png", title: "fire Noise_B", href: "../html/fireNoise_B.html"},
                    {src: "../images/brushNoise_A.png", title: "brush Noise_A", href: "../html/brushNoise_A.html"},
                    {src: "../images/brushNoise_B.png", title: "brush Noise_B", href: "../html/brushNoise_B.html"},
                 ]
