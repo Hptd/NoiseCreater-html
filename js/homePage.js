@@ -55,7 +55,8 @@ ul.addEventListener('click', e => {
     if(e.target.nodeName === "A")
     {
         const href = e.target.href.split("/")[4]
-        if(href == "www.shaderer.com")
+        // if(href == "www.shaderer.com")
+        if(href.includes("www.shaderer.com"))
         {
             window.open("http://www.shaderer.com")
         }
@@ -63,8 +64,9 @@ ul.addEventListener('click', e => {
     else if(e.target.nodeName === "IMG")
     {
         const a = e.target.nextElementSibling
-        const href = a.href.split("/")[4]
-        if(href == "www.shaderer.com"){
+        // const href = a.href.split("/")[4]
+        // if(href == "www.shaderer.com"){
+        if(a.href.includes("www.shaderer.com")){
             window.open("http://www.shaderer.com")
         }
         a.click()
