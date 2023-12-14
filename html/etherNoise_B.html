@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Noise Creater - ether noise_B</title>
+    <link rel="stylesheet" href="../css/sampleNoise.css">
+    <link rel="stylesheet" href="../css/cloudNoise.css">
+</head>
+<body>
+    <div class="params">
+        <div class="inValue">
+            <span>导出图片尺寸</span>
+            <div class="right">
+                <span>==></span>
+                <input id="downloadSize" type="text" placeholder="默认512" value="512">
+                <span> <== </span>
+                <button id="btnReSize">重置</button>
+            </div>
+        </div>
+        <hr>
+        <div class="inValue">
+            <span>整体变化速度</span>
+            <div class="right">
+                <span>==></span>
+                <input class="slider" id="speed" type="range" min="0" max="3" value="1" step="0.001">
+                <span> <== </span>
+                <button id="btnReSpeed">重置</button>
+            </div>
+        </div>
+        <hr>
+        <div class="inValue">
+            <span>整体明暗(黑白模式)</span>
+            <div class="right">
+                <span>==></span>
+                <input class="slider" id="brightness" type="range" min="-1" max="1" value="0" step="0.01">
+                <span> <== </span>
+                <button id="btnReBrightness">重置</button>
+            </div>
+        </div>
+        <hr>
+        <div class="inValue">
+            <span>主体颜色</span>
+            <div class="right">
+                <span>==></span>
+                <input type="color" id="color-choose-1" value="#e90b09" style="width : 50px; height: 30px; border: none; padding: 0;">
+                <span> <== </span>
+                <button id="btnReColorChoose1">重置</button>
+            </div>
+        </div>
+        <hr>
+        <div class="inValue">
+            <span>边缘颜色</span>
+            <div class="right">
+                <span>==></span>
+                <input type="color" id="color-choose-2" value="#fab009" style="width : 50px; height: 30px; border: none; padding: 0;">
+                <span> <== </span>
+                <button id="btnReColorChoose2">重置</button>
+            </div>
+        </div>
+        <hr>
+        <div class="inValue">
+            <span>黑白模式</span>
+            <div class="right">
+                <span>==></span>
+                <input id="color-remove" type="checkbox" style="width: 25px; height: 25px;">
+                <span> <== </span>
+            </div>
+        </div>
+        <hr>
+        <div class="inValue">
+            <span>颜色取反</span>
+            <div class="right">
+                <span>==></span>
+                <input id="color-reverse" type="checkbox" style="width: 25px; height: 25px;">
+                <span> <== </span>
+            </div>
+        </div>
+        <hr>
+        <div class="inValue">
+            <span>开始 | 暂停</span>
+            <div class="right">
+                <span>==></span>
+                <input id="voronoi-noise-check" type="checkbox" checked="checked" style="width: 25px; height: 25px;">
+                <span> <== </span>
+            </div>
+        </div>
+        <hr>
+        <div class="videoOut">
+            <button style="margin:auto 30px;" id="videoStart">开始录制</button>
+            <button style="margin:auto 30px auto 0px;" id="videoStop">结束录制</button>
+            <span style="opacity: 0.4;">默认25帧/秒</span>
+            <span style="opacity: 0.4; display: none; margin-left: 30px;" id="timeFlag">正在录制...</span>
+        </div>
+        <hr>
+        <div class="sponsor">
+            <div class="sponsor-text">
+                <span>图片保存直接鼠标右键即可
+                    欢迎提供建议和意见，更欢迎商业合作：
+                    wz_ftf_offcial@163.com
+                    感觉不错，赞助一下吧（鞠躬）</span>
+            </div>
+            <img src="../images/wechat.png" alt="">
+        </div>
+    </div>
+
+    <script type="importmap">
+        {
+        "imports": {
+            "three": "../packages/node_modules/three/build/three.module.js"
+        }
+    }
+    </script>
+    <script data-main="../packages/node_modules/file-saver/dist/FileSaver.js" src="../packages/node_modules/requirejs/require.js"></script>
+    <script type="module" src="../js/etherNoise_B_ThreeJS.js"></script>
+</body>
+</html>

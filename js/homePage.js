@@ -1,4 +1,5 @@
 const noiseList = [{src: "../images/thanks.png", title: "致谢名单", href: "../html/thanksList.html"},
+                   {src: "../images/shaderStore.png", title: "shader 商城", href: "www.shaderer.com"},
                    {src: "../images/sampleNoise.png", title: "Sample Noise", href: "../html/sampleNoise.html"},
                    {src: "../images/sampleColorNoise.png", title: "Sample color Noise", href: "../html/sampleColorNoise.html"},
                    {src: "../images/cloudNoise.png", title: "Cloud Noise", href: "../html/cloudNoise.html"},
@@ -19,6 +20,7 @@ const noiseList = [{src: "../images/thanks.png", title: "致谢名单", href: ".
                    {src: "../images/cellNoise_A.png", title: "cell Noise_A", href: "../html/cellNoise_A.html"},
                    {src: "../images/cellNoise_B.png", title: "cell Noise_B", href: "../html/cellNoise_B.html"},
                    {src: "../images/cellNoise_C.png", title: "cell Noise_C", href: "../html/cellNoise_C.html"},
+                   {src: "../images/bandingGradients.png", title: "banding Gradients Noise", href: "../html/bandingGradients.html"},
                    {src: "../images/squircleColorNoise.png", title: "squircle color Noise", href: "../html/squircleColorNoise.html"},
                    {src: "../images/circleNoise_A.png", title: "circle Noise_A", href: "../html/circleNoise_A.html"},
                    {src: "../images/circleNoise_B.png", title: "circle Noise_B", href: "../html/circleNoise_B.html"},
@@ -31,6 +33,9 @@ const noiseList = [{src: "../images/thanks.png", title: "致谢名单", href: ".
                    {src: "../images/knitNoise_F.png", title: "knit Noise_F", href: "../html/knitNoise_F.html"},
                    {src: "../images/fireNoise_A.png", title: "fire Noise_A", href: "../html/fireNoise_A.html"},
                    {src: "../images/fireNoise_B.png", title: "fire Noise_B", href: "../html/fireNoise_B.html"},
+                   {src: "../images/etherNoise_A.png", title: "ether Noise_A", href: "../html/etherNoise_A.html"},
+                   {src: "../images/etherNoise_B.png", title: "ether Noise_B", href: "../html/etherNoise_B.html"},
+                   {src: "../images/etherNoise_C.png", title: "ether Noise_C", href: "../html/etherNoise_C.html"},
                    {src: "../images/brushNoise_A.png", title: "brush Noise_A", href: "../html/brushNoise_A.html"},
                    {src: "../images/brushNoise_B.png", title: "brush Noise_B", href: "../html/brushNoise_B.html"},
                 ]
@@ -47,14 +52,21 @@ for(i=0; i<noiseList.length; i++){
 
 // 模拟点击链接效果
 ul.addEventListener('click', e => {
-    if(e.target.nodeName === "LI")
+    if(e.target.nodeName === "A")
     {
-        const a = e.target.childNodes[3]
-        a.click()
+        const href = e.target.href.split("/")[4]
+        if(href == "www.shaderer.com")
+        {
+            window.open("http://www.shaderer.com")
+        }
     }
     else if(e.target.nodeName === "IMG")
     {
         const a = e.target.nextElementSibling
+        const href = a.href.split("/")[4]
+        if(href == "www.shaderer.com"){
+            window.open("http://www.shaderer.com")
+        }
         a.click()
     }
 })
