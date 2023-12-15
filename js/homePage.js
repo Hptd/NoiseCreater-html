@@ -1,5 +1,5 @@
 const noiseList = [{src: "../images/thanks.png", title: "致谢名单", href: "../html/thanksList.html"},
-                   {src: "../images/shaderStore.png", title: "shader 商城", href: "www.shaderer.com"},
+                   {src: "../images/shaderStore.png", title: "shader 商城", href: "http://www.shaderer.com"},
                    {src: "../images/sampleNoise.png", title: "Sample Noise", href: "../html/sampleNoise.html"},
                    {src: "../images/sampleColorNoise.png", title: "Sample color Noise", href: "../html/sampleColorNoise.html"},
                    {src: "../images/cloudNoise.png", title: "Cloud Noise", href: "../html/cloudNoise.html"},
@@ -45,28 +45,27 @@ const ul = document.querySelector(".page .noise-list ul")
 for(i=0; i<noiseList.length; i++){
     const li = document.createElement("li")
     li.innerHTML = `
-        <img src=${noiseList[i].src}>
+        <img src=${noiseList[i].src} data-href=${noiseList[i].href}>
         <a href=${noiseList[i].href} target="_blank">${noiseList[i].title}</a>`
+    // 添加图片点击事件监听器
+    li.addEventListener('click', handleImageClick)
     ul.appendChild(li)
 }
 
-// 模拟点击链接效果
-ul.addEventListener('click', e => {
-    if(e.target.nodeName === "A")
-    {
-        // const href = e.target.href.split("/")[4]
-        // if(href == "www.shaderer.com")
-        if(e.target.href.includes("www.shaderer.com"))
-        {
+function handleImageClick(event) {
+    const clickedElement = event.target;
+
+    // 检查点击的元素类型并执行相应的操作
+    if (clickedElement.nodeName === 'IMG') { // shaderer store 跳转
+        // 获取自定义属性
+        const link = clickedElement.getAttribute('data-href')
+        if (link.includes('www.shaderer.com')) {
+            // 跳转到外部网站必须要加 http:// !!!!!
             window.open("http://www.shaderer.com")
         }
-    }
-    else if(e.target.nodeName === "IMG")
-    {
-        const a = e.target.nextElementSibling
-        if(a.href.includes("www.shaderer.com")){
-            window.open("http://www.shaderer.com")
+        else { // noise list
+            // 实现跳转到指定链接
+            window.open(link)
         }
-        a.click()
     }
-})
+}
