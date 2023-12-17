@@ -25,6 +25,7 @@ const noiseList = [{src: "../images/thanks.png", title: "致谢名单", href: ".
                    {src: "../images/circleNoise_A.png", title: "circle Noise_A", href: "../html/circleNoise_A.html"},
                    {src: "../images/circleNoise_B.png", title: "circle Noise_B", href: "../html/circleNoise_B.html"},
                    {src: "../images/circleNoise_C.png", title: "circle Noise_C", href: "../html/circleNoise_C.html"},
+                   {src: "../images/isovaluesNoise.png", title: "isovalues Noise", href: "../html/isovaluesNoise.html"},
                    {src: "../images/knitNoise_A.png", title: "knit Noise_A", href: "../html/knitNoise_A.html"},
                    {src: "../images/knitNoise_B.png", title: "knit Noise_B", href: "../html/knitNoise_B.html"},
                    {src: "../images/knitNoise_C.png", title: "knit Noise_C", href: "../html/knitNoise_C.html"},
@@ -36,6 +37,8 @@ const noiseList = [{src: "../images/thanks.png", title: "致谢名单", href: ".
                    {src: "../images/etherNoise_A.png", title: "ether Noise_A", href: "../html/etherNoise_A.html"},
                    {src: "../images/etherNoise_B.png", title: "ether Noise_B", href: "../html/etherNoise_B.html"},
                    {src: "../images/etherNoise_C.png", title: "ether Noise_C", href: "../html/etherNoise_C.html"},
+                   {src: "../images/太极.png", title: "太极阴阳鱼", href: "../html/太极.html"},
+                   {src: "../images/eye.png", title: "eye", href: "../html/eye.html"},
                    {src: "../images/brushNoise_A.png", title: "brush Noise_A", href: "../html/brushNoise_A.html"},
                    {src: "../images/brushNoise_B.png", title: "brush Noise_B", href: "../html/brushNoise_B.html"},
                 ]
