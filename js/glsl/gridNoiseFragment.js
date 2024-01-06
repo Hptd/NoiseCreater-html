@@ -11,6 +11,7 @@ uniform float delicate;
 uniform float warp;
 uniform int colorRev;
 uniform int rotate;
+uniform bool useAlpha;
 
 // float widthRange = delicate; // 方块最大尺寸 (0.002 - 0.05)
 float scale = 20.0;
@@ -65,6 +66,7 @@ void main(){
     }
     gridNoise = max(0., min(1., gridNoise + brightness));
     gl_FragColor = vec4(vec3(gridNoise),1.);
+    if(useAlpha){gl_FragColor.a = gridNoise;}
 }`
 
 export default FragShader

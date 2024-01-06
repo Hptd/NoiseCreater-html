@@ -7,6 +7,7 @@ uniform float uvScaleX;
 uniform float uvScaleY;
 uniform float brightness;
 uniform float noiseChooseValue;
+uniform bool useAlpha;
 
 float hash21(vec2 p)
 {
@@ -78,6 +79,7 @@ void main(){
     float sampleNoise_A = noise_itself(mainUv);
     sampleNoise_A = max(0., min(1., sampleNoise_A + brightness));
     gl_FragColor = vec4(vec3(sampleNoise_A), 1.);
+    if(useAlpha)gl_FragColor = vec4(sampleNoise_A);
 }`
 
 export default FragShader

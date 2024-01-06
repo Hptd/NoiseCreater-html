@@ -11,6 +11,7 @@ uniform float onlyBri;
 uniform float delicate;
 uniform float broken;
 uniform int colorRev;
+uniform bool useAlpha;
 
 float noise( vec3 p )
 {
@@ -97,6 +98,7 @@ void main(){
     color = max(vec3(0.0), min(vec3(1.0), color + brightness));
 
     gl_FragColor = vec4(color, 1.);
+    if(useAlpha){gl_FragColor.a = color.g;}
 }`
 
 export default FragShader

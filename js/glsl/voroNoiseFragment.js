@@ -9,6 +9,7 @@ uniform float brightness;
 uniform float iTime;
 uniform float delicate;
 uniform int colorRev;
+uniform bool useAlpha;
 
 vec3 hash3( vec2 p )
 {
@@ -55,6 +56,7 @@ void main(){
         f = 1.0 - f;
     }
     gl_FragColor = vec4(vec3(f), 1.);
+    if(useAlpha){gl_FragColor.a = f;}
 }`
 
 export default FragShader

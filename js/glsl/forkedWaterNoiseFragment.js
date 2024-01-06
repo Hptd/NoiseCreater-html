@@ -13,6 +13,7 @@ uniform vec3 color1;
 uniform vec3 color2;
 uniform bool colorRev;
 uniform bool colorRem;
+uniform bool useAlpha;
 
 vec4 mod289(vec4 x)
 {
@@ -124,6 +125,7 @@ void main(){
     }
 
     gl_FragColor = vec4(col, 1.);
+    if(useAlpha){gl_FragColor = vec4(col, intensity);}
 }`
 
 export default FragShader

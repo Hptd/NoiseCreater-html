@@ -51,6 +51,7 @@ const btnReBrightness = document.querySelector("#btnReBrightness")
 const btnReColor1 = document.querySelector("#btnReColorChoose1")
 const btnReColor2 = document.querySelector("#btnReColorChoose2")
 const btnReSharkX = document.querySelector("#btnReSharkX")
+const inputNoiseAlpha = document.querySelector("#use-alpha")
 
 // 传参列表
 const materialPlane = new THREE.ShaderMaterial({
@@ -65,7 +66,8 @@ const materialPlane = new THREE.ShaderMaterial({
         brightness:{value:   +inputBrightness.value},
         color1:    {value:   hexToRgb(inputColorChoose1.value)},
         color2:    {value:   hexToRgb(inputColorChoose2.value)},
-        sharkX:    {value:   +inputSharkX.value}
+        sharkX:    {value:   +inputSharkX.value},
+        useAlpha:  {value:   inputNoiseAlpha.checked}
     }
 })
 // 监听传参数
@@ -80,7 +82,8 @@ params.addEventListener('input', (e) => {
         materialPlane.uniforms.brightness.value = +inputBrightness.value,
         materialPlane.uniforms.color1.value     = hexToRgb(inputColorChoose1.value),
         materialPlane.uniforms.color2.value     = hexToRgb(inputColorChoose2.value),
-        materialPlane.uniforms.sharkX.value     = +inputSharkX.value
+        materialPlane.uniforms.sharkX.value     = +inputSharkX.value,
+        materialPlane.uniforms.useAlpha.value   = inputNoiseAlpha.checked
     }
 })
 

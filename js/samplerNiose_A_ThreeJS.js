@@ -38,6 +38,7 @@ const inputScaleX = document.querySelector("#scaleX")
 const inputScaleY = document.querySelector("#scaleY")
 const inputBrightness = document.querySelector("#brightness")
 const inputNoiseChooses = document.querySelectorAll(".noise-choose")
+const inputNoiseAlpha = document.querySelector("#use-alpha")
 let noiseChooseValue = 1
 
 const params = document.querySelector(".params")
@@ -59,6 +60,7 @@ const materialPlane = new THREE.ShaderMaterial({
         uvScaleX:  {value:   +inputScaleX.value   },
         uvScaleY:  {value:   +inputScaleY.value   },
         brightness:{value:   +inputBrightness.value},
+        useAlpha:  {value:   inputNoiseAlpha.checked},
         noiseChooseValue:{value: noiseChooseValue}
     }
 })
@@ -71,7 +73,8 @@ params.addEventListener('input', (e) => {
         materialPlane.uniforms.uvMoveY.value    =    +inputMoveY.value,
         materialPlane.uniforms.uvScaleX.value   =    +inputScaleX.value,
         materialPlane.uniforms.uvScaleY.value   =    +inputScaleY.value,
-        materialPlane.uniforms.brightness.value = +inputBrightness.value
+        materialPlane.uniforms.brightness.value = +inputBrightness.value,
+        materialPlane.uniforms.useAlpha.value   =   inputNoiseAlpha.checked
     }
 })
 // Noise 类型选择

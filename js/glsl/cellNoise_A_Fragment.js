@@ -9,6 +9,7 @@ uniform float brightness;
 uniform float whiteIntensity;
 uniform float iTime;
 uniform int colorRev;
+uniform bool useAlpha;
 
 const float Pi = 3.141592653589793238462643383279502884197169399375105820974944592;
 
@@ -66,6 +67,7 @@ void main(){
         r0 = 1.0 - r0;
     }
     gl_FragColor = vec4(vec3(r0), 1.);
+	if(useAlpha){gl_FragColor.a = r0;}
 }`
 
 export default FragShader

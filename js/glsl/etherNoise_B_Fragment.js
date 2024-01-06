@@ -7,6 +7,7 @@ uniform float speed_;
 uniform float brightness;
 uniform bool colorRev;
 uniform bool colorRem;
+uniform bool useAlpha;
 
 void main(){
 	vec2 st = (vUv-0.17)*1.5;
@@ -51,6 +52,7 @@ void main(){
     }
 
     gl_FragColor = vec4(col, 1);
+    if(useAlpha){gl_FragColor.a = 1.-dist;}
 }`
 
 export default FragShader

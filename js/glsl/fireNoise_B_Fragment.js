@@ -13,6 +13,7 @@ uniform float saturate;
 uniform float speed_;
 uniform bool colorRev;
 uniform bool colorRem;
+uniform bool useAlpha;
 
 #define S(v,r) smoothstep( r, r + 3., v ) 
 vec2 hash(vec2 p){
@@ -74,6 +75,8 @@ void main(){
 
     col += logo(uv);
 
+    float alpha = clamp(0.0, 1.0, c0+c1+c2+c3);
+
     if(colorRem){
         float col_wb = dot(col, vec3(0.22, 0.707, 0.071));
         col_wb = max(0., min(1., mix(col_wb + brightness, col_wb, (1.-c0)*(1.-c3))));
@@ -84,6 +87,8 @@ void main(){
     }
 
     gl_FragColor = vec4(col, 1);
+    if(useAlpha){gl_FragColor.a = alpha;}
+
 }`
 
 export default FragShader

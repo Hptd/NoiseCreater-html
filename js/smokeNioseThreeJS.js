@@ -50,6 +50,7 @@ const inputColorGray4 = document.querySelector("#color-gray-4")
 
 const inputCheckBox = document.querySelector("#voronoi-noise-check")
 const inputColorReserve = document.querySelector("#color-reverse")
+const inputNoiseAlpha = document.querySelector("#use-alpha")
 let iTime = 0;
 let colorRev = 0;
 
@@ -93,7 +94,8 @@ const materialPlane = new THREE.ShaderMaterial({
         colorGray2:{value:   +inputColorGray2.value},
         colorGray3:{value:   +inputColorGray3.value},
         colorGray4:{value:   +inputColorGray4.value},
-        colorRev:  {value:   colorRev}
+        colorRev:  {value:   colorRev},
+        useAlpha:  {value:   inputNoiseAlpha.checked}
     }
 })
 // 监听传参数
@@ -115,7 +117,8 @@ params.addEventListener('input', (e) => {
         materialPlane.uniforms.warp.value       = +inputWarp.value,
         materialPlane.uniforms.colorGray2.value = +inputColorGray2.value,
         materialPlane.uniforms.colorGray3.value = +inputColorGray3.value,
-        materialPlane.uniforms.colorGray4.value = +inputColorGray4.value
+        materialPlane.uniforms.colorGray4.value = +inputColorGray4.value,
+        materialPlane.uniforms.useAlpha.value   = inputNoiseAlpha.checked
     }
 })
 // 开关Noise动画模式

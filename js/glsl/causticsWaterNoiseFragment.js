@@ -12,6 +12,7 @@ uniform vec3 color1;
 uniform vec3 color2;
 uniform bool colorRev;
 uniform bool colorRem;
+uniform bool useAlpha;
 
 vec4 permute(vec4 t) {
     return t * (t * 34.0 + 133.0);
@@ -116,6 +117,7 @@ void main(){
 
     noiseResult = os2NoiseWithDerivatives_ImproveXY(X - noiseResult.xyz / 16.0);
     float value = noiseResult.w;
+    float alpha = value*0.5+0.5;
 
     // Time varying pixel color
     // vec3 col = color1 * (onlyBri + 0.5 * value); // 亮度 (-0.5, 1.5)
@@ -128,11 +130,13 @@ void main(){
         col_wb = max(0., min(1., col_wb + brightness));
         if(colorRev){
             col_wb = 1.0 - col_wb;
+            alpha = 1.-alpha;
         }
         col = vec3(col_wb);
     }
 
     gl_FragColor = vec4(col, 1.);
+    if(useAlpha){gl_FragColor = vec4(col, alpha);}
 }`
 
 export default FragShader

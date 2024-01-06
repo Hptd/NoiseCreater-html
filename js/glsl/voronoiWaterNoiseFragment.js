@@ -13,6 +13,7 @@ uniform int subdivide;
 uniform float cellScale;
 uniform float whiteScale;
 uniform int colorRev;
+uniform bool useAlpha;
 
 vec2 hash2(vec2 p ) {
 	return fract(sin(vec2(dot(p, vec2(123.4, 748.6)), dot(p, vec2(547.3, 659.3))))*5232.85324);   
@@ -65,6 +66,7 @@ void main(){
 		voronoiNoise = 1.0 - voronoiNoise;
 	}
     gl_FragColor = vec4(voronoiNoise.xyz, 1.);
+	if(useAlpha){gl_FragColor = vec4(voronoiNoise.xyz, voronoiNoise.y);}
 }`
 
 export default FragShader

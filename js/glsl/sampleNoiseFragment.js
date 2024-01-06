@@ -1,5 +1,6 @@
 const FragShader = /*glsl*/`
 varying vec2 vUv;
+uniform bool useAlpha;
 
 float noise(vec2 pos)
 {
@@ -10,6 +11,7 @@ void main(){
 	vec2 mainUv = vUv;
     float sampleNoise = noise(mainUv*(10000.));
     gl_FragColor = vec4(vec3(sampleNoise), 1.);
+    if(useAlpha){gl_FragColor = vec4(sampleNoise);}
 }`
 
 export default FragShader

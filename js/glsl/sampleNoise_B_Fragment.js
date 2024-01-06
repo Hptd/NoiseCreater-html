@@ -9,6 +9,7 @@ uniform float brightness;
 uniform float noiseChooseValue;
 uniform float iTime;
 uniform int colorRev;
+uniform bool useAlpha;
 
 float hash21(vec2 p)
 {
@@ -91,6 +92,7 @@ void main(){
         sampleNoise_A = 1.0 - sampleNoise_A;
     }
     gl_FragColor = vec4(vec3(sampleNoise_A), 1.);
+    if(useAlpha){gl_FragColor = vec4(sampleNoise_A);}
 }`
 
 export default FragShader

@@ -8,6 +8,7 @@ uniform float uvScaleY;
 uniform float brightness;
 uniform float iTime;
 uniform int colorRev;
+uniform bool useAlpha;
 
 float noise(vec2 pos)
 {
@@ -54,6 +55,7 @@ void main(){
 		perlinNoise = 1.0 - perlinNoise;
 	}
     gl_FragColor = vec4(vec3(perlinNoise), 1.);
+	if(useAlpha){gl_FragColor = vec4(perlinNoise);}
 }`
 
 export default FragShader

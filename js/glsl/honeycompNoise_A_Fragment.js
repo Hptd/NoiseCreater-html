@@ -8,6 +8,7 @@ uniform float uvScaleY;
 uniform float brightness;
 uniform float iTime;
 uniform int colorRev;
+uniform bool useAlpha;
 
 vec3 hash(vec3 x)
 { 
@@ -52,6 +53,7 @@ void main(){
     }
 
     gl_FragColor = vec4(vec3(honeycompNoise), 1.0);
+    if(useAlpha){gl_FragColor.a = honeycompNoise;}
 }`
 
 export default FragShader

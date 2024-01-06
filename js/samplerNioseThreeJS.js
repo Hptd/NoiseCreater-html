@@ -30,10 +30,22 @@ document.body.appendChild(renderer.domElement)
 
 const planeGeo = new THREE.PlaneGeometry(10, 10)
 
+const inputNoiseAlpha = document.querySelector("#use-alpha")
+
 // 传参列表
 const materialPlane = new THREE.ShaderMaterial({
     vertexShader: VertShader,
-    fragmentShader: FragShader
+    fragmentShader: FragShader,
+    uniforms:{
+        useAlpha: {value: inputNoiseAlpha.checked}
+    }
+})
+// 监听传参数
+const params = document.querySelector(".params")
+params.addEventListener('input', (e) => {
+    if(e.target.nodeName === "INPUT"){
+        materialPlane.uniforms.useAlpha.value = inputNoiseAlpha.checked
+    }
 })
 
 const plane = new THREE.Mesh(planeGeo, materialPlane)

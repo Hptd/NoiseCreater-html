@@ -11,6 +11,7 @@ uniform vec3 color2;
 uniform float sharkX;
 uniform bool colorRev;
 uniform bool colorRem;
+uniform bool useAlpha;
 
 float gyroid (vec3 p)
 {
@@ -41,9 +42,12 @@ void main(){
 
     shape = max(0., min(1., shape + brightness));
 
-    vec3 col = mix(color1, color2, shape);
+    vec3 col = mix(color2, color1, shape);
 
     gl_FragColor = vec4(col,1.);
+    if(useAlpha){
+        gl_FragColor.a = 1.0-shape;
+    }
 }`
 
 export default FragShader

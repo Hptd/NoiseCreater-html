@@ -11,6 +11,7 @@ uniform vec3 color2;
 uniform float sharkX;
 uniform bool colorRev;
 uniform bool colorRem;
+uniform bool useAlpha;
 
 #define _PerlinPrecision 8.0
 #define _PerlinOctaves 8.0
@@ -74,6 +75,7 @@ void main(){
     col = max(vec3(0.), min(vec3(1.), col + brightness));
 
     gl_FragColor = vec4(col,1.);
+    if(useAlpha){gl_FragColor.a = v;}
 }`
 
 export default FragShader

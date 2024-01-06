@@ -1,5 +1,6 @@
 const noiseList = [{src: "../images/thanks.png", title: "致谢名单", href: "../html/thanksList.html"},
                    {src: "../images/shaderStore.png", title: "shader 商城", href: "http://www.shaderer.com"},
+                   {src: "../images/更新日志.png", title: "更新日志", href: "../html/updateLog.html"},
                    {src: "../images/sampleNoise.png", title: "Sample Noise", href: "../html/sampleNoise.html"},
                    {src: "../images/sampleColorNoise.png", title: "Sample color Noise", href: "../html/sampleColorNoise.html"},
                    {src: "../images/cloudNoise.png", title: "Cloud Noise", href: "../html/cloudNoise.html"},

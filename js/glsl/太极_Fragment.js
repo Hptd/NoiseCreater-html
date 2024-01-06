@@ -6,6 +6,7 @@ uniform float speed_;
 uniform float sharkX;
 uniform float sharkY;
 uniform bool colorRev;
+uniform bool useAlpha;
 
 #define BIG_CIRCLE_RADIUS 0.35
 #define SMALL_CIRCLE_RADIUS sharkY
@@ -37,6 +38,7 @@ void main(){
     v += WHITE_CIRCLE(SMALL_CIRCLE_RADIUS, centerBottom);
     v *= BLACK_CIRCLE(SMALL_CIRCLE_RADIUS, centerTop);
     v += BLACK_CIRCLE(BIG_CIRCLE_RADIUS*2.0 + STROKE_WIDTH, center);
+    float alpha = 1.-BLACK_CIRCLE(BIG_CIRCLE_RADIUS*1.96 + STROKE_WIDTH, center);
 
     vec3 col = vec3(v);
 
@@ -44,6 +46,7 @@ void main(){
         col = 1.0 - col;
     }
     gl_FragColor = vec4(col, 1.0);
+    if(useAlpha){gl_FragColor.a = alpha;}
 }`
 
 export default FragShader

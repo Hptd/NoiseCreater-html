@@ -12,6 +12,7 @@ uniform float sharkY;
 uniform float sharkZ;
 uniform bool colorRev;
 uniform bool colorRem;
+uniform bool useAlpha;
 
 mat2 rotate2d(float angle){
     return mat2(cos(angle),-sin(angle),
@@ -39,6 +40,7 @@ void main(){
     float radius = uvScale;
     vec2 center = vec2(0.);
     col = paintCircle(uv, center, radius, sharkY);
+    float alpha = col.g;
     vec2 v = rotate2d(iTime*speed_) * uv;
     col *= vec3(v.x, v.y, sharkZ-v.y*v.x);
     col += paintCircle(uv, center, radius, sharkX);
@@ -53,6 +55,7 @@ void main(){
     }
 
     gl_FragColor = vec4(col, 1);
+    if(useAlpha){gl_FragColor.a = alpha;}
 }`
 
 export default FragShader

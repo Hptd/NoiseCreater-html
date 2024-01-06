@@ -12,6 +12,7 @@ uniform float sharkX;
 uniform float sharkY;
 uniform bool colorRev;
 uniform bool colorRem;
+uniform bool useAlpha;
 
 #define t iTime * speed_
 mat2 m(float a){float c=cos(a), s=sin(a);return mat2(c,-s,s,c);}
@@ -46,6 +47,7 @@ void main(){
     }
 
     gl_FragColor = vec4(col, 1);
+    if(useAlpha){gl_FragColor.a = col.b;}
 }`
 
 export default FragShader

@@ -15,6 +15,7 @@ uniform float whiteScale;
 uniform vec3 color1;
 uniform bool colorRev;
 uniform bool colorRem;
+uniform bool useAlpha;
 
 #define TAU 6.28318530718
 #define MAX_ITER subdivide // 疏密程度 (0 - 10)
@@ -38,6 +39,7 @@ void main(){
 	c /= float(MAX_ITER);
 	c = 1.17-pow(c, 1.2); 
 	vec3 colour = vec3(pow(abs(c), 8.0));
+	float alpha = pow(abs(c), 8.0);
     colour = clamp(colour + color1, 0.0, 1.0); // bg color
 
 	colour = max(vec3(0.), min(vec3(1.), colour + brightness));
@@ -51,6 +53,7 @@ void main(){
     }
 
     gl_FragColor = vec4(colour, 1.);
+	if(useAlpha){gl_FragColor = vec4(colour, alpha);}
 }`
 
 export default FragShader

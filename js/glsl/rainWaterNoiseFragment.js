@@ -13,6 +13,7 @@ uniform float alpha;
 uniform float detail;
 uniform float density;
 uniform bool colorRev;
+uniform bool useAlpha;
 
 vec2 randVec(float inVal){
     
@@ -82,6 +83,9 @@ void main(){
 	fragColor = max(0., min(1., fragColor + brightness));
 
     gl_FragColor = vec4(vec3(fragColor), 1.);
+    if(useAlpha){
+        gl_FragColor.a = fragColor;
+    }
 }`
 
 export default FragShader

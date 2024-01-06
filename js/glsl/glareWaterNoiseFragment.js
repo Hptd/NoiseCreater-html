@@ -14,6 +14,7 @@ uniform int detail;
 uniform vec3 color2;
 uniform bool colorRev;
 uniform bool colorRem;
+uniform bool useAlpha;
 
 #define VORONOI_NOISE_POW 5.0
 #define VORONOI_BRIGHTNESS_ADD 0.05
@@ -157,6 +158,7 @@ void main(){
     }
 
     gl_FragColor = vec4(col, 1.);
+    if(useAlpha){gl_FragColor = vec4(col, fractVoro);}
 }`
 
 export default FragShader

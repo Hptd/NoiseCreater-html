@@ -10,6 +10,7 @@ uniform float iTime;
 uniform float delicate;
 uniform float broken;
 uniform int colorRev;
+uniform bool useAlpha;
 
 float hash(float x)
 {
@@ -53,6 +54,7 @@ void main(){
     }
 
     gl_FragColor = vec4(vec3(honeycompNoise), 1.);
+    if(useAlpha){gl_FragColor.a = honeycompNoise;}
 }`
 
 export default FragShader

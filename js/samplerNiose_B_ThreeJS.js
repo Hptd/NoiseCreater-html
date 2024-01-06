@@ -42,6 +42,7 @@ let noiseChooseValue = 1
 
 const inputCheckBox = document.querySelector("#voronoi-noise-check")
 const inputColorReserve = document.querySelector("#color-reverse")
+const inputNoiseAlpha = document.querySelector("#use-alpha")
 let iTime = 0;
 let colorRev = 0;
 
@@ -65,7 +66,8 @@ const materialPlane = new THREE.ShaderMaterial({
         brightness:{value:   +inputBrightness.value},
         noiseChooseValue:{value: noiseChooseValue},
         iTime:     {value:   +iTime},
-        colorRev:  {value:   colorRev}
+        colorRev:  {value:   colorRev},
+        useAlpha:  {value:   inputNoiseAlpha.checked}
     }
 })
 // 监听传参数
@@ -77,7 +79,8 @@ params.addEventListener('input', (e) => {
         materialPlane.uniforms.uvMoveY.value    =    +inputMoveY.value,
         materialPlane.uniforms.uvScaleX.value   =    +inputScaleX.value,
         materialPlane.uniforms.uvScaleY.value   =    +inputScaleY.value,
-        materialPlane.uniforms.brightness.value = +inputBrightness.value
+        materialPlane.uniforms.brightness.value = +inputBrightness.value,
+        materialPlane.uniforms.useAlpha.value   = inputNoiseAlpha.checked
     }
 })
 // Noise 类型选择

@@ -16,6 +16,7 @@ uniform float sharkX;
 uniform float sharkY;
 uniform bool colorRev;
 uniform bool colorRem;
+uniform bool useAlpha;
 
 #define SIZE 20.
 // #define BLACK_COL vec3(32,43,51)/255.
@@ -60,6 +61,7 @@ void main(){
     }
 
     gl_FragColor = vec4(col,1.);
+    if(useAlpha){gl_FragColor.a = m;}
 }`
 
 export default FragShader

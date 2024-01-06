@@ -5,6 +5,7 @@ uniform int delicate;
 uniform float broken;
 uniform float iTime;
 uniform int colorRev;
+uniform bool useAlpha;
 
 #define TWO_PI 6.2831853072
 #define PI 3.14159265359
@@ -110,6 +111,7 @@ void main(){
     }
 
     gl_FragColor = fragColor;
+    if(useAlpha){gl_FragColor.a = fragColor.g;}
 }`
 
 export default FragShader

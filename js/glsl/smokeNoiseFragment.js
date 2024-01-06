@@ -18,6 +18,7 @@ uniform float colorGray2;
 uniform float colorGray3;
 uniform float colorGray4;
 uniform int colorRev;
+uniform bool useAlpha;
 
 float random (in vec2 _st) {
     return fract(sin(dot(_st.xy,
@@ -81,6 +82,7 @@ void main(){
     }
 
     gl_FragColor = vec4(color,1.);
+    if(useAlpha){gl_FragColor.a = color.g;}
 }`
 
 export default FragShader
